@@ -3,21 +3,6 @@ var db = require("./index.js");
 var seedData = require("./seed_data.js");
 var Sequelize = require("sequelize");
 
-//database, username, pass
-// const sequelize = new Sequelize("siestaNbrekkie", "root", "", {
-// 	host: "localhost",
-// 	dialect: "mysql"
-// });
-
-// sequelize
-// 	.authenticate()
-// 	.then(() => {
-// 		console.log("Connection has been established successfully.");
-// 	})
-// 	.catch(err => {
-// 		console.error("Unable to connect to the database:", err);
-// 	});
-
 /***************** MODELS *****************/
 /*****************************************/
 const Listing = db.sequelize.define(
