@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -w",
-    "server": "nodemon ./server/server.js"
+    "server": "nodemon ./server/server.js",
+    "seed-data": "node ./db/seed.js"
   },
   "repository": {
     "type": "git",
@@ -28,9 +29,13 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.7.0",
     "nodemon": "^1.19.3",
     "path": "^0.12.7",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "sequelize": "^5.19.5"
   }
 }
