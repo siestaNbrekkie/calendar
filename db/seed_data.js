@@ -4,12 +4,16 @@ var listing = [
 	{
 		short_desc: "Beautiful contemporary villa in Pedregal",
 		city: "Cabo San Lucas",
-		country: "Mexico"
+		country: "Mexico",
+		discount_rate: 0.03,
+		discount_measure: 7
 	},
 	{
 		short_desc: "The Joshua Tree House",
 		city: "Joshua Tree",
-		country: "USA"
+		country: "USA",
+		discount_rate: 0.1,
+		discount_measure: 14
 	}
 ];
 
@@ -33,7 +37,7 @@ var minmax = [
 		thursday_min: 3,
 		friday_min: 3,
 		saturday_min: 3,
-		max_days: 14,
+		max_days: 30,
 		listing_id: 2
 	}
 ];

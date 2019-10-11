@@ -6,15 +6,13 @@ module.exports = {
 		filename: "main.js",
 		path: path.resolve(__dirname, "public")
 	},
-
 	resolve: {
-		extensions: [".jsx", ".js", ".json"]
+		extensions: [".js", ".jsx", ".css", ".json"]
 	},
-
 	module: {
 		rules: [
 			{
-				test: /\.(js | jsx)$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
 					loader: "babel-loader",
