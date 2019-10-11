@@ -7,6 +7,8 @@ create table Listings (
 	short_desc varchar(255),
 	city varchar(255),
 	country varchar(255),
+	discount_rate double,
+	discount_measure int,
 	PRIMARY KEY (id)
 );
 
