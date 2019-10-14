@@ -1,6 +1,7 @@
 var express = require("express");
 var model = require("./model.js");
 var router = express.Router();
+const path = require("path");
 
 router.get("/:id?", (req, res) => {
 	var id = req.params.id;
