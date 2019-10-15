@@ -1,5 +1,6 @@
 .discount p {
 	color: #484848;
-	font-family: "Montserrat", "sans-serif";
+	font-family: "Montserrat", "Roboto", "Helvetica", "sans-serif";
 	font-size: 14px;
+	font-weight: "regular";
 }

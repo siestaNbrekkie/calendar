@@ -35,7 +35,7 @@ function getBookingData(id, res) {
 			results.discount_measure = data.discount_measure;
 			results.dateRestrictions = data.MinMaxDay.dataValues;
 			for (var i = 0; i < uaRes.length; i++) {
-				results.bookedDates.push(uaRes[i].dataValues);
+				results.bookedDates.push(uaRes[i].dataValues.ua_date);
 			}
 
 			res.send(results);

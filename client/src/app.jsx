@@ -53,19 +53,20 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className={styles.app}>
-				<h1>Availability</h1>
+			<div>
+				<h1 className={styles.h1}>Availability</h1>
 				<Discount
 					rate={this.state.discount_rate}
 					measure={this.state.discount_measure}
 				/>
-				<div className={(styles.app, styles.div)}>
+				<div className={styles.calendar}>
 					<Calendar
 						month={this.state.month1}
 						backButton={true}
 						fwdButton={false}
 						handleFwdClick={this.handleFwdClick}
 						handleBackClick={this.handleBackClick}
+						bookedDates={this.state.bookedDates}
 					/>
 					<Calendar
 						month={this.state.month2}
@@ -73,9 +74,10 @@ class App extends React.Component {
 						fwdButton={true}
 						handleFwdClick={this.handleFwdClick}
 						handleBackClick={this.handleBackClick}
+						bookedDates={this.state.bookedDates}
 					/>
 				</div>
-				<button className={styles.app}>Clear dates</button>
+				<button className={styles.button}>Clear dates</button>
 			</div>
 		);
 	}

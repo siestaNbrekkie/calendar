@@ -11,26 +11,34 @@ function createMonth(date) {
 		.endOf("month")
 		.format("D");
 
-	var month = [];
+	var datesInMonth = [];
 	var day = 1;
+	var month = moment(date).month();
 
 	var week = Array.apply(null, Array(7));
 	var count = dayOf1st;
 	for (var i = dayOf1st; i <= parseInt(endOfMonth) + dayOf1st; i++) {
 		if (count >= 6 || day === parseInt(endOfMonth)) {
-			week[count] = day;
-			month.push(week);
+			week[count] = moment()
+				.month(month)
+				.date(day)
+				.format("YYYY-MM-DD");
+			datesInMonth.push(week);
 			week = Array.apply(null, Array(7));
 			count = 0;
 		} else {
-			if (month.length === 0 && count === 0) {
+			if (datesInMonth.length === 0 && count === 0) {
 				count = dayOf1st;
 			}
-			week[count] = day;
+			week[count] = moment()
+				.month(month)
+				.date(day)
+				.format("YYYY-MM-DD");
 			count++;
 		}
 		day++;
 	}
-	return month;
+	return datesInMonth;
 }
+// console.log(createMonth("2019-02-16"));
 export default createMonth;

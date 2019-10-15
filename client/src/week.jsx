@@ -1,9 +1,11 @@
 import React from "react";
 import Day from "./day.jsx";
-var moment = require("moment");
 
 function week(props) {
-	var days = props.days.map(day => <Day day={day} />);
+	var days = props.days.map(day => (
+		<Day day={day} bookedDates={props.bookedDates} />
+	));
+
 	return (
 		<tr key={props.index} className="week">
 			{days}
