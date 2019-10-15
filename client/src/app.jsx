@@ -9,7 +9,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bookedDates: [],
+			bookedDates: new Set(),
 			dateRestrictions: {},
 			discount_measure: undefined,
 			discount_rate: undefined,
@@ -40,7 +40,7 @@ class App extends React.Component {
 			.get(`http://localhost:3000/${lastSegment}`)
 			.then(res => {
 				this.setState({
-					bookedDates: res.data.bookedDates,
+					bookedDates: new Set(res.data.bookedDates),
 					dateRestrictions: res.data.dateRestrictions,
 					discount_measure: res.data.discount_measure,
 					discount_rate: res.data.discount_rate

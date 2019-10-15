@@ -22,21 +22,8 @@ class Day extends React.Component {
 				</td>
 			);
 		} else {
-			if (
-				moment(this.props.day).diff(
-					moment(this.props.bookedDates[i]),
-					"days"
-				) >= 0
-			) {
-				for (var i = 0; i < this.props.bookedDates.length; i++) {
-					if (
-						moment(this.props.day).isSame(
-							moment(this.props.bookedDates[i])
-						)
-					) {
-						className = cx(styles.td, styles.unavailable);
-					}
-				}
+			if (this.props.bookedDates.has(this.props.day)) {
+				className = cx(styles.td, styles.unavailable);
 			}
 		}
 		return (
