@@ -15,9 +15,9 @@ function createMonth(date) {
 	var day = 1;
 
 	var week = Array.apply(null, Array(7));
-	var count = 0;
+	var count = dayOf1st;
 	for (var i = dayOf1st; i <= parseInt(endOfMonth) + dayOf1st; i++) {
-		if (count === 6 || day === parseInt(endOfMonth)) {
+		if (count >= 6 || day === parseInt(endOfMonth)) {
 			week[count] = day;
 			month.push(week);
 			week = Array.apply(null, Array(7));
@@ -34,5 +34,3 @@ function createMonth(date) {
 	return month;
 }
 export default createMonth;
-
-// console.log(moment().format("YYYY"));

@@ -1,6 +1,7 @@
 import React from "react";
 import Discount from "./discount.jsx";
 import Calendar from "./calendar.jsx";
+import styles from "../styles/app.css";
 const axios = require("axios");
 var moment = require("moment");
 
@@ -14,6 +15,20 @@ class App extends React.Component {
 			discount_rate: undefined,
 			month1: moment(),
 			month2: moment().add(1, "M")
+		};
+
+		this.handleFwdClick = () => {
+			this.setState({
+				month1: this.state.month2,
+				month2: moment(this.state.month2).add(1, "M")
+			});
+		};
+
+		this.handleBackClick = () => {
+			this.setState({
+				month1: moment(this.state.month1).subtract(1, "M"),
+				month2: this.state.month1
+			});
 		};
 	}
 
@@ -35,17 +50,32 @@ class App extends React.Component {
 				console.log("err.. did not set state", err);
 			});
 	}
+
 	render() {
 		return (
-			<div>
-				<div className="title">Availability</div>
+			<div className={styles.app}>
+				<h1>Availability</h1>
 				<Discount
 					rate={this.state.discount_rate}
 					measure={this.state.discount_measure}
 				/>
-				<Calendar month={this.state.month1} />
-				<Calendar month={this.state.month2} />
-				<button>Clear dates</button>
+				<div className={(styles.app, styles.div)}>
+					<Calendar
+						month={this.state.month1}
+						backButton={true}
+						fwdButton={false}
+						handleFwdClick={this.handleFwdClick}
+						handleBackClick={this.handleBackClick}
+					/>
+					<Calendar
+						month={this.state.month2}
+						backButton={false}
+						fwdButton={true}
+						handleFwdClick={this.handleFwdClick}
+						handleBackClick={this.handleBackClick}
+					/>
+				</div>
+				<button className={styles.app}>Clear dates</button>
 			</div>
 		);
 	}

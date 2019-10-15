@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/calendar.css";
 
 class Day extends React.Component {
 	constructor(props) {
@@ -7,11 +8,17 @@ class Day extends React.Component {
 	}
 
 	render() {
-		return (
-			<td key={this.props.day} className="day">
-				{this.props.day}
-			</td>
-		);
+		if (!this.props.day) {
+			return (
+				<td
+					key={this.props.day}
+					className={(styles.td, styles.invalidDate)}
+				>
+					{this.props.day}
+				</td>
+			);
+		}
+		return <td key={this.props.day}>{this.props.day}</td>;
 	}
 }
 

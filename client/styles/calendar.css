@@ -1,0 +1,60 @@
+table {
+	/*	table-layout: fixed;
+*/
+	border-collapse: collapse;
+	font-family: "Montserrat", "sans-serif";
+	font-size: 14px;
+	text-align: center;
+}
+
+th {
+	color: #484848;
+	padding: 4px;
+}
+
+td {
+	font-weight: bold;
+	border: 2px solid white;
+	border-radius: 7px;
+	padding: 9px;
+}
+
+/* available - light blue background with dark blue fonk */
+td {
+	color: #038c8c;
+	background-color: rgba(120, 191, 191, 0.2);
+}
+/*hover unselected - light blue with white font */
+td:hover {
+	color: #038c8c;
+	background-color: rgba(111, 191, 191, 0.5);
+}
+
+/*selected - dark blue background with white font*/
+td.selected {
+	color: white;
+	background-color: rgba(3, 140, 140, 1);
+}
+
+/*hover selected predictive- light blue with white font */
+td.hover-selected {
+	color: white;
+	background-color: rgba(203, 238, 235, 1);
+}
+
+/*diagonal stripes, unavailable dates*/
+td.unavailable {
+	color: rgba(140, 140, 140, 0.7);
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(140, 140, 140, 0.1),
+		rgba(140, 140, 140, 0.1) 0.8px,
+		rgba(255, 255, 255, 0.1) 0.8px,
+		rgba(255, 255, 255, 0.1) 3px
+	);
+}
+
+/*not a date in the given month - white unavailable dates*/
+td.invalidDate {
+	background: rgba(255, 255, 255, 1);
+}
