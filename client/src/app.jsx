@@ -82,7 +82,6 @@ class App extends React.Component {
 				firstdate.isAfter(Array.from(this.state.bookedDates).pop())
 			) {
 				var totalDays = Math.abs(firstdate.diff(date, "days"));
-				console.log("totalDays: ", totalDays, "date: ", date);
 				//check if the min day and max day requirements are fulfilled
 				if (
 					totalDays >= minDay &&

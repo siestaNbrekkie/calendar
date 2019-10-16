@@ -96,8 +96,8 @@ class Day extends React.Component {
 				);
 			}
 		} else if (
-			this.props.selectedFirstDate !== undefined &&
-			this.props.selectedSecDate === undefined
+			this.props.selectedFirstDate &&
+			!this.props.selectedSecDate
 		) {
 			//locate min num days
 			var minDays =
@@ -114,7 +114,7 @@ class Day extends React.Component {
 					"days"
 				) > 0
 			) {
-				//first date is selected and date is prior to selected
+				//firstDate is selected and current date is prior to firstDate
 				//no click
 				className = cx(styles.td, styles.unavailable);
 				return (
@@ -132,16 +132,31 @@ class Day extends React.Component {
 					"days"
 				) >= minDays
 			) {
-				//first date is selected and is within min date range
+				//first date is selected and currentDate is within min date range
 				//no click
-				className = cx(styles.td, styles.hoverSelected);
+				className = cx(styles.td, styles.hoverMinDays);
+				return (
+					<td key={this.props.day} className={className}>
+						{moment(this.props.day).date()}
+					</td>
+				);
+			} else if (
+				moment(this.props.selectedFirstDate).diff(
+					this.props.day,
+					"days"
+				) <
+				this.props.dateRestrictions.max_days * -1
+			) {
+				//currenetdate is out of maximum date range
+				className = cx(styles.td, styles.unavailable);
 				return (
 					<td key={this.props.day} className={className}>
 						{moment(this.props.day).date()}
 					</td>
 				);
 			} else {
-				//first date is selected and 2nd is out of min date range
+				//first date is selected and 2nd is outside of min date range, and available
+				className = cx(styles.td, styles.selectedAvailable);
 				return (
 					<td
 						key={this.props.day}

@@ -29,7 +29,7 @@
 	padding: 9px;
 }
 
-/* available - light blue background with dark blue fonk */
+/* available - light blue background with dark blue font */
 .td.available {
 	color: #038c8c;
 	background-color: rgba(120, 191, 191, 0.2);
@@ -47,7 +47,19 @@
 }
 
 /*hover selected predictive- light blue with white font */
-.td.hoverSelected {
+.td.hoverMinDays {
+	color: white;
+	background-color: rgba(203, 238, 235, 1);
+}
+
+/* available dates, first Date Selected - light blue background with dark blue font */
+.td.selectedAvailable {
+	color: #038c8c;
+	background-color: rgba(120, 191, 191, 0.2);
+}
+
+/*hover unselected available Date- light blue with white font */
+.td.selectedAvailable:hover {
 	color: white;
 	background-color: rgba(203, 238, 235, 1);
 }
