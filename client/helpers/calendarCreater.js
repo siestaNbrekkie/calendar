@@ -40,5 +40,5 @@ function createMonth(date) {
 	}
 	return datesInMonth;
 }
-// console.log(createMonth("2019-02-16"));
+
 export default createMonth;

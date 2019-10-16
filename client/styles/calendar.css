@@ -47,7 +47,7 @@
 }
 
 /*hover selected predictive- light blue with white font */
-.td.hover-selected {
+.td.hoverSelected {
 	color: white;
 	background-color: rgba(203, 238, 235, 1);
 }
@@ -67,4 +67,11 @@
 /*not a date in the given month - white unavailable dates*/
 .td.invalidDate {
 	background: rgba(255, 255, 255, 1);
+}
+
+/*show minimum night stay*/
+.tooltip .tooltiptext {
+	visibility: visible;
+	background-color: white;
+	color: black;
 }

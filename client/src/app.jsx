@@ -13,22 +13,88 @@ class App extends React.Component {
 			dateRestrictions: {},
 			discount_measure: undefined,
 			discount_rate: undefined,
-			month1: moment(),
-			month2: moment().add(1, "M")
+			leftMonth: moment(),
+			rightMonth: moment().add(1, "M"),
+			selectedFirstDate: undefined,
+			selectedSecDate: undefined
 		};
 
 		this.handleFwdClick = () => {
 			this.setState({
-				month1: this.state.month2,
-				month2: moment(this.state.month2).add(1, "M")
+				leftMonth: this.state.rightMonth,
+				rightMonth: moment(this.state.rightMonth).add(1, "M")
 			});
 		};
 
 		this.handleBackClick = () => {
 			this.setState({
-				month1: moment(this.state.month1).subtract(1, "M"),
-				month2: this.state.month1
+				leftMonth: moment(this.state.leftMonth).subtract(1, "M"),
+				rightMonth: this.state.leftMonth
 			});
+		};
+
+		this.handleClearClick = () => {
+			this.setState({
+				selectedFirstDate: undefined,
+				selectedSecDate: undefined
+			});
+		};
+
+		this.handleDateClick = date => {
+			if (!this.state.selectedFirstDate) {
+				this.setState({
+					selectedFirstDate: date
+				});
+			} else {
+				var checkValidSecDate = this.checkDates(date);
+				this.setState({
+					selectedSecDate: checkValidSecDate
+				});
+			}
+		};
+
+		this.checkDates = date => {
+			var firstdate = moment(this.state.selectedFirstDate);
+			var minDay = this.state.dateRestrictions[
+				firstdate
+					.format("dddd")
+					.toLowerCase()
+					.concat("_min")
+			];
+
+			if (this.state.bookedDates.has(moment(date).format("YYYY-MM-DD"))) {
+				return undefined;
+			}
+
+			//if sec date is before the first booked date, or first date is after the last booked date
+			if (
+				date < this.state.bookedDates.values().next().value ||
+				firstdate.isAfter(Array.from(this.state.bookedDates).pop())
+			) {
+				var totalDays = Math.abs(firstdate.diff(date, "days"));
+				//check if the min day and max day requirements are fulfilled
+				if (
+					totalDays >= minDay &&
+					totalDays <= this.state.dateRestrictions.max_days
+				) {
+					return date;
+				} else {
+					return undefined;
+				}
+			}
+
+			//check every date between the first and second date
+			for (var i = 1; i < Math.abs(firstdate.diff(date, "days")); i++) {
+				if (
+					this.state.bookedDates.has(
+						firstdate.add(i, "d").format("YYYY-MM-DD")
+					)
+				) {
+					return undefined;
+				}
+			}
+
+			return date;
 		};
 	}
 
@@ -61,23 +127,36 @@ class App extends React.Component {
 				/>
 				<div className={styles.calendar}>
 					<Calendar
-						month={this.state.month1}
+						month={this.state.leftMonth}
 						backButton={true}
 						fwdButton={false}
 						handleFwdClick={this.handleFwdClick}
 						handleBackClick={this.handleBackClick}
 						bookedDates={this.state.bookedDates}
+						handleDateClick={this.handleDateClick}
+						dateRestrictions={this.state.dateRestrictions}
+						selectedFirstDate={this.state.selectedFirstDate}
+						selectedSecDate={this.state.selectedSecDate}
 					/>
 					<Calendar
-						month={this.state.month2}
+						month={this.state.rightMonth}
 						backButton={false}
 						fwdButton={true}
 						handleFwdClick={this.handleFwdClick}
 						handleBackClick={this.handleBackClick}
 						bookedDates={this.state.bookedDates}
+						handleDateClick={this.handleDateClick}
+						dateRestrictions={this.state.dateRestrictions}
+						selectedFirstDate={this.state.selectedFirstDate}
+						selectedSecDate={this.state.selectedSecDate}
 					/>
 				</div>
-				<button className={styles.button}>Clear dates</button>
+				<button
+					className={styles.button}
+					onClick={this.handleClearClick}
+				>
+					Clear dates
+				</button>
 			</div>
 		);
 	}

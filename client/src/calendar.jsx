@@ -9,7 +9,15 @@ function Calendar(props) {
 	var datesInMonth = monthData(props.month);
 
 	var weeks = datesInMonth.map((days, index) => (
-		<Week days={days} weekNum={index} bookedDates={props.bookedDates} />
+		<Week
+			days={days}
+			weekNum={index}
+			bookedDates={props.bookedDates}
+			handleDateClick={props.handleDateClick}
+			dateRestrictions={props.dateRestrictions}
+			selectedFirstDate={props.selectedFirstDate}
+			selectedSecDate={props.selectedSecDate}
+		/>
 	));
 
 	return (

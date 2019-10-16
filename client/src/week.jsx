@@ -3,7 +3,14 @@ import Day from "./day.jsx";
 
 function week(props) {
 	var days = props.days.map(day => (
-		<Day day={day} bookedDates={props.bookedDates} />
+		<Day
+			day={day}
+			bookedDates={props.bookedDates}
+			handleDateClick={props.handleDateClick}
+			dateRestrictions={props.dateRestrictions}
+			selectedFirstDate={props.selectedFirstDate}
+			selectedSecDate={props.selectedSecDate}
+		/>
 	));
 
 	return (
