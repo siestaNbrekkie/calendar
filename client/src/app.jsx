@@ -41,6 +41,18 @@ class App extends React.Component {
 			});
 		};
 
+		this.handleReserveClick = () => {
+			var parts = document.URL.split("/");
+			var lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
+			var data = {
+				id: lastSegment,
+				checkIn: this.state.selectedFirstDate,
+				checkOut: this.state.selectedSecDate
+			};
+
+			//post request
+		};
+
 		this.handleHover = date => {
 			this.setState({
 				hoveredDate: date
@@ -138,7 +150,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className={styles.container}>
-				<h1 className={styles.h1}>Availability</h1>
+				<h2 className={styles.h2}>Availability</h2>
 				<Discount
 					rate={this.state.discount_rate}
 					measure={this.state.discount_measure}

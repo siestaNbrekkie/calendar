@@ -11,6 +11,8 @@
 .month {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	margin-left: 10px;
 }
 .center {
 	font-family: "Montserrat", "Helvetica", "sans-serif";
@@ -27,11 +29,13 @@
 .button {
 	border: 1px solid rgba(140, 140, 140, 0.2);
 	border-radius: 2.5px;
+	height: 34px;
+	width: 39px;
 }
 
 .invisible {
-	width: 19px;
-	height: 19px;
+	width: 39px;
+	height: 34px;
 }
 
 .th {
