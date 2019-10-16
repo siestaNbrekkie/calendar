@@ -4,6 +4,16 @@ import cx from "classnames";
 var moment = require("moment");
 
 function Day(props) {
+	var minDays;
+	if (props.selectedFirstDate) {
+		minDays =
+			props.dateRestrictions[
+				moment(props.selectedFirstDate)
+					.format("dddd")
+					.toLowerCase()
+					.concat("_min")
+			];
+	}
 	return (
 		<td
 			key={props.day}
@@ -40,6 +50,15 @@ function Day(props) {
 			}
 		>
 			{displayValue(props.day)}
+			{displayMinDays(
+				props.day,
+				props.selectedFirstDate,
+				props.selectedSecDate
+			) ? (
+				<div
+					className={cx(styles.td, styles.minNight)}
+				>{`${minDays} night minimum stay`}</div>
+			) : null}
 		</td>
 	);
 }
@@ -116,6 +135,7 @@ function determineClassName(
 	}
 
 	//default to available style
+
 	return cx(styles.td, styles.available);
 }
 
@@ -174,6 +194,15 @@ function displayValue(day) {
 	} else {
 		return moment(day).date();
 	}
+}
+
+function displayMinDays(day, checkIn, checkOut) {
+	//checkIn is selected and is current day
+	if (moment(day).isSame(checkIn) && checkIn && !checkOut) {
+		return true;
+	}
+
+	return false;
 }
 
 export default Day;

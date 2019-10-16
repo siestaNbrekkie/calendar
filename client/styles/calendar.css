@@ -6,6 +6,8 @@
 	font-size: 14px;
 	text-align: center;
 	margin: 10px;
+	position: relative;
+	z-index: 100;
 }
 
 .month {
@@ -49,6 +51,8 @@
 	border: 2.5px solid white;
 	border-radius: 7px;
 	padding: 10px;
+	position: relative;
+	z-index: 200;
 }
 
 /* available - light blue background with dark blue font */
@@ -108,4 +112,20 @@
 	visibility: visible;
 	background-color: white;
 	color: black;
+}
+
+/*show minimum night stay*/
+.td.minNight {
+	font-size: 10px;
+	top: -25px;
+	left: 0;
+	padding: 5px;
+	border: 1px;
+	white-space: nowrap;
+	box-shadow: -1.5px 1.5px 3px grey;
+	text-align: center;
+	position: absolute;
+	color: black;
+	background: white;
+	z-index: 500;
 }

@@ -185,15 +185,17 @@ class App extends React.Component {
 						hoveredDate={this.state.hoveredDate}
 					/>
 				</div>
-				<div className={styles.lowerBtns}>
-					<button
-						className={styles.clearBtn}
-						onClick={this.handleClearClick}
-					>
-						Clear dates
-					</button>
-					<button className={styles.reserveBtn}>Reserve</button>
-				</div>
+				{this.state.selectedFirstDate ? (
+					<div className={styles.lowerBtns}>
+						<button
+							className={styles.clearBtn}
+							onClick={this.handleClearClick}
+						>
+							Clear dates
+						</button>
+						<button className={styles.reserveBtn}>Reserve</button>
+					</div>
+				) : null}
 			</div>
 		);
 	}

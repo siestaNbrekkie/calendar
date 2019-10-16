@@ -17,12 +17,11 @@ function createMonth(date) {
 
 	var week = Array.apply(null, Array(7));
 	var count = dayOf1st;
+	var currentDate = startOfMonth;
 	for (var i = dayOf1st; i <= parseInt(endOfMonth) + dayOf1st; i++) {
 		if (count >= 6 || day === parseInt(endOfMonth)) {
-			week[count] = moment()
-				.month(month)
-				.date(day)
-				.format("YYYY-MM-DD");
+			week[count] = moment(currentDate).format("YYYY-MM-DD");
+			currentDate = moment(currentDate).add(1, "d");
 			datesInMonth.push(week);
 			week = Array.apply(null, Array(7));
 			count = 0;
@@ -30,10 +29,8 @@ function createMonth(date) {
 			if (datesInMonth.length === 0 && count === 0) {
 				count = dayOf1st;
 			}
-			week[count] = moment()
-				.month(month)
-				.date(day)
-				.format("YYYY-MM-DD");
+			week[count] = moment(currentDate).format("YYYY-MM-DD");
+			currentDate = moment(currentDate).add(1, "d");
 			count++;
 		}
 		day++;
