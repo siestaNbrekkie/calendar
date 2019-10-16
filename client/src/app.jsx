@@ -16,7 +16,8 @@ class App extends React.Component {
 			leftMonth: moment(),
 			rightMonth: moment().add(1, "M"),
 			selectedFirstDate: undefined,
-			selectedSecDate: undefined
+			selectedSecDate: undefined,
+			hoveredDate: undefined
 		};
 
 		this.handleFwdClick = () => {
@@ -40,6 +41,12 @@ class App extends React.Component {
 			});
 		};
 
+		this.handleHover = date => {
+			this.setState({
+				hoveredDate: date
+			});
+		};
+
 		this.handleDateClick = date => {
 			if (!this.state.selectedFirstDate) {
 				this.setState({
@@ -57,7 +64,8 @@ class App extends React.Component {
 			} else {
 				var checkValidSecDate = this.checkDates(date);
 				this.setState({
-					selectedSecDate: checkValidSecDate
+					selectedSecDate: checkValidSecDate,
+					hoveredDate: undefined
 				});
 			}
 		};
@@ -147,6 +155,8 @@ class App extends React.Component {
 						dateRestrictions={this.state.dateRestrictions}
 						selectedFirstDate={this.state.selectedFirstDate}
 						selectedSecDate={this.state.selectedSecDate}
+						handleHover={this.handleHover}
+						hoveredDate={this.state.hoveredDate}
 					/>
 					<Calendar
 						month={this.state.rightMonth}
@@ -159,6 +169,8 @@ class App extends React.Component {
 						dateRestrictions={this.state.dateRestrictions}
 						selectedFirstDate={this.state.selectedFirstDate}
 						selectedSecDate={this.state.selectedSecDate}
+						handleHover={this.handleHover}
+						hoveredDate={this.state.hoveredDate}
 					/>
 				</div>
 				<button

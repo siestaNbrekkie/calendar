@@ -6,15 +6,9 @@ var moment = require("moment");
 class Day extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			date: this.props.day
-		};
-	}
-
-	static getDerivedStateFromProps(props, state) {
-		return {
-			date: props.day
-		};
+		// this.state = {
+		// 	date: this.props.day
+		// };
 	}
 
 	render() {
@@ -59,6 +53,64 @@ class Day extends React.Component {
 					{moment(this.props.day).date()}
 				</td>
 			);
+		} else if (this.props.selectedFirstDate && this.props.hoveredDate) {
+			// the first date is selected and a date is hovered
+			console.log(this.props.hoveredDate);
+			if (
+				moment(this.props.day).isBetween(
+					this.props.selectedFirstDate,
+					this.props.hoveredDate,
+					null,
+					[]
+				)
+			) {
+				//date is part of the check-in through checkout date
+				className = cx(styles.td, styles.hoverMinDays);
+				return (
+					<td
+						key={this.props.day}
+						className={className}
+						onClick={() =>
+							this.props.handleDateClick(this.props.day)
+						}
+						onMouseEnter={() =>
+							this.props.handleHover(this.props.day)
+						}
+					>
+						{moment(this.props.day).date()}
+					</td>
+				);
+			} else if (
+				moment(this.props.selectedFirstDate).diff(
+					this.props.day,
+					"days"
+				) <
+				this.props.dateRestrictions.max_days * -1
+			) {
+				//currenetdate is out of maximum date range
+				className = cx(styles.td, styles.unavailable);
+				return (
+					<td key={this.props.day} className={className}>
+						{moment(this.props.day).date()}
+					</td>
+				);
+			} else {
+				//date is available
+				return (
+					<td
+						key={this.props.day}
+						className={className}
+						onClick={() =>
+							this.props.handleDateClick(this.props.day)
+						}
+						onMouseEnter={() =>
+							this.props.handleHover(this.props.day)
+						}
+					>
+						{moment(this.props.day).date()}
+					</td>
+				);
+			}
 		} else if (this.props.selectedFirstDate && this.props.selectedSecDate) {
 			//both the first date and second date are selected
 			if (
@@ -88,7 +140,7 @@ class Day extends React.Component {
 						key={this.props.day}
 						className={className}
 						onClick={() =>
-							this.props.handleDateClick(this.state.date)
+							this.props.handleDateClick(this.props.day)
 						}
 					>
 						{moment(this.props.day).date()}
@@ -162,8 +214,11 @@ class Day extends React.Component {
 						key={this.props.day}
 						className={className}
 						onClick={() => {
-							this.props.handleDateClick(this.state.date);
+							this.props.handleDateClick(this.props.day);
 						}}
+						onMouseEnter={() =>
+							this.props.handleHover(this.props.day)
+						}
 					>
 						{moment(this.props.day).date()}
 					</td>
@@ -175,7 +230,7 @@ class Day extends React.Component {
 				<td
 					key={this.props.day}
 					className={className}
-					onClick={() => this.props.handleDateClick(this.state.date)}
+					onClick={() => this.props.handleDateClick(this.props.day)}
 				>
 					{moment(this.props.day).date()}
 				</td>

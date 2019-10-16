@@ -17,6 +17,8 @@ function Calendar(props) {
 			dateRestrictions={props.dateRestrictions}
 			selectedFirstDate={props.selectedFirstDate}
 			selectedSecDate={props.selectedSecDate}
+			handleHover={props.handleHover}
+			hoveredDate={props.hoveredDate}
 		/>
 	));
 

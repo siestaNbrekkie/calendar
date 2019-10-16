@@ -5,7 +5,9 @@
 	font-family: "Montserrat", "Helvetica", "sans-serif";
 	font-size: 14px;
 	text-align: center;
+	margin: 10px;
 }
+
 .month {
 	font-weight: 600;
 	font-size: 20px;
@@ -26,7 +28,7 @@
 	font-weight: 600;
 	border: 2px solid white;
 	border-radius: 7px;
-	padding: 9px;
+	padding: 10px;
 }
 
 /* available - light blue background with dark blue font */
@@ -52,13 +54,13 @@
 	background-color: rgba(203, 238, 235, 1);
 }
 
-/* available dates, first Date Selected - light blue background with dark blue font */
+/* available dates, checkIn date is selected - light blue background with dark blue font */
 .td.selectedAvailable {
 	color: #038c8c;
 	background-color: rgba(120, 191, 191, 0.2);
 }
 
-/*hover unselected available Date- light blue with white font */
+/*hover unselected available Dates for checkout selection- light blue with white font */
 .td.selectedAvailable:hover {
 	color: white;
 	background-color: rgba(203, 238, 235, 1);
