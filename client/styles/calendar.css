@@ -9,13 +9,29 @@
 }
 
 .month {
+	display: flex;
+	justify-content: space-between;
+}
+.center {
+	font-family: "Montserrat", "Helvetica", "sans-serif";
+	color: #484848;
 	font-weight: 600;
 	font-size: 20px;
+	margin: 10px;
+}
+.left,
+.right {
+	flex: 1;
 }
 
 .button {
 	border: 1px solid rgba(140, 140, 140, 0.2);
 	border-radius: 2.5px;
+}
+
+.invisible {
+	width: 19px;
+	height: 19px;
 }
 
 .th {
@@ -26,7 +42,7 @@
 
 .td {
 	font-weight: 600;
-	border: 2px solid white;
+	border: 2.5px solid white;
 	border-radius: 7px;
 	padding: 10px;
 }

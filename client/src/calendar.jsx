@@ -23,8 +23,8 @@ function Calendar(props) {
 	));
 
 	return (
-		<table key="calendar" className={styles.table}>
-			<caption className={styles.month}>
+		<div>
+			<div className={styles.month}>
 				{props.backButton ? (
 					<button
 						className={styles.button}
@@ -39,11 +39,15 @@ function Calendar(props) {
 							></path>
 						</svg>
 					</button>
-				) : null}
-				{props.month
-					.format("MMMM")
-					.concat(" ")
-					.concat(props.month.format("YYYY"))}
+				) : (
+					<div className={(styles.month, styles.invisible)}></div>
+				)}
+				<div className={(styles.month, styles.center)}>
+					{props.month
+						.format("MMMM")
+						.concat(" ")
+						.concat(props.month.format("YYYY"))}
+				</div>
 				{props.fwdButton ? (
 					<button
 						className={styles.button}
@@ -58,21 +62,25 @@ function Calendar(props) {
 							{/*<path d="M0 15 L22 15 L22 25 L0 25 Z"></path>*/}
 						</svg>
 					</button>
-				) : null}
-			</caption>
-			<thead>
-				<tr>
-					<th className={styles.th}>Su</th>
-					<th className={styles.th}>Mo</th>
-					<th className={styles.th}>Tu</th>
-					<th className={styles.th}>We</th>
-					<th className={styles.th}>Th</th>
-					<th className={styles.th}>Fr</th>
-					<th className={styles.th}>Sa</th>
-				</tr>
-			</thead>
-			<tbody>{weeks}</tbody>
-		</table>
+				) : (
+					<div className={(styles.month, styles.invisible)}></div>
+				)}
+			</div>
+			<table key="calendar" className={styles.table}>
+				<thead>
+					<tr>
+						<th className={styles.th}>Su</th>
+						<th className={styles.th}>Mo</th>
+						<th className={styles.th}>Tu</th>
+						<th className={styles.th}>We</th>
+						<th className={styles.th}>Th</th>
+						<th className={styles.th}>Fr</th>
+						<th className={styles.th}>Sa</th>
+					</tr>
+				</thead>
+				<tbody>{weeks}</tbody>
+			</table>
+		</div>
 	);
 }
 

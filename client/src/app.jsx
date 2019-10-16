@@ -173,7 +173,7 @@ class App extends React.Component {
 						hoveredDate={this.state.hoveredDate}
 					/>
 				</div>
-				<div className={styles.lowerBtn}>
+				<div className={styles.lowerBtns}>
 					<button
 						className={styles.clearBtn}
 						onClick={this.handleClearClick}

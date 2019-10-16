@@ -3,27 +3,30 @@
 	font-family: "Montserrat", "Helvetica", "sans-serif";
 	font-size: 20px;
 	font-weight: 600;
+	margin-left: 10px;
 }
 
 .clearBtn {
 	color: #038c8c;
 	border: none;
 	background: none;
-	margin-top: 20px;
+	font-size: 14px;
 }
 
 .reserveBtn {
 	color: white;
 	border: none;
 	background: #ff5a5f;
-	margin-top: 20px;
 	border-radius: 3px;
-	font-size: 10px;
+	font-size: 14px;
+	width: 150px;
+	height: 30px;
 }
 
-.lowerBtn {
+.lowerBtns {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 20px;
 }
 
 .calendar {
@@ -35,5 +38,5 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	width: 600px;
+	width: 590px;
 }
