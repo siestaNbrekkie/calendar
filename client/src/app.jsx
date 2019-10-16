@@ -45,6 +45,15 @@ class App extends React.Component {
 				this.setState({
 					selectedFirstDate: date
 				});
+			} else if (
+				this.state.selectedFirstDate &&
+				this.state.selectedSecDate
+			) {
+				//have not submitted date to server yet, reselecting date range
+				this.setState({
+					selectedFirstDate: date,
+					selectedSecDate: undefined
+				});
 			} else {
 				var checkValidSecDate = this.checkDates(date);
 				this.setState({
@@ -66,12 +75,14 @@ class App extends React.Component {
 				return undefined;
 			}
 
-			//if sec date is before the first booked date, or first date is after the last booked date
+			//if sec date is before the first booked date
+			// or first date is after the last booked date
 			if (
 				date < this.state.bookedDates.values().next().value ||
 				firstdate.isAfter(Array.from(this.state.bookedDates).pop())
 			) {
 				var totalDays = Math.abs(firstdate.diff(date, "days"));
+				console.log("totalDays: ", totalDays, "date: ", date);
 				//check if the min day and max day requirements are fulfilled
 				if (
 					totalDays >= minDay &&

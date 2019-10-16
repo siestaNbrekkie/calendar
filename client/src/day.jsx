@@ -11,6 +11,12 @@ class Day extends React.Component {
 		};
 	}
 
+	static getDerivedStateFromProps(props, state) {
+		return {
+			date: props.day
+		};
+	}
+
 	render() {
 		var className = cx(styles.td, styles.available);
 
@@ -58,9 +64,12 @@ class Day extends React.Component {
 			if (
 				moment(this.props.day).isBetween(
 					this.props.selectedFirstDate,
-					this.props.selectedSecDate
+					this.props.selectedSecDate,
+					null,
+					[]
 				)
 			) {
+				console.log("inclusive: ", this.props.day);
 				//date is part of the check-in through checkout date
 				className = cx(styles.td, styles.selected);
 				return (
@@ -73,8 +82,15 @@ class Day extends React.Component {
 					</td>
 				);
 			} else {
+				//date is available
 				return (
-					<td key={this.props.day} className={className}>
+					<td
+						key={this.props.day}
+						className={className}
+						onClick={() =>
+							this.props.handleDateClick(this.state.date)
+						}
+					>
 						{moment(this.props.day).date()}
 					</td>
 				);
@@ -125,14 +141,14 @@ class Day extends React.Component {
 					</td>
 				);
 			} else {
-				//first date is selected and is out of min date range
+				//first date is selected and 2nd is out of min date range
 				return (
 					<td
 						key={this.props.day}
 						className={className}
-						onClick={() =>
-							this.props.handleDateClick(this.state.date)
-						}
+						onClick={() => {
+							this.props.handleDateClick(this.state.date);
+						}}
 					>
 						{moment(this.props.day).date()}
 					</td>
