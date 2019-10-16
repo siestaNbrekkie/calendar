@@ -50,7 +50,7 @@ class App extends React.Component {
 				checkOut: this.state.selectedSecDate
 			};
 
-			//post request
+			//post request logic pending
 		};
 
 		this.handleHover = date => {
@@ -68,7 +68,7 @@ class App extends React.Component {
 				this.state.selectedFirstDate &&
 				this.state.selectedSecDate
 			) {
-				//have not submitted date to server yet, reselecting date range
+				//user can reselect date range prior to sending dates to server
 				this.setState({
 					selectedFirstDate: date,
 					selectedSecDate: undefined

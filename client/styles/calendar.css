@@ -108,13 +108,6 @@
 }
 
 /*show minimum night stay*/
-.tooltip .tooltiptext {
-	visibility: visible;
-	background-color: white;
-	color: black;
-}
-
-/*show minimum night stay*/
 .td.minNight {
 	font-size: 10px;
 	top: -25px;
