@@ -137,7 +137,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className={styles.container}>
 				<h1 className={styles.h1}>Availability</h1>
 				<Discount
 					rate={this.state.discount_rate}
@@ -173,12 +173,15 @@ class App extends React.Component {
 						hoveredDate={this.state.hoveredDate}
 					/>
 				</div>
-				<button
-					className={styles.button}
-					onClick={this.handleClearClick}
-				>
-					Clear dates
-				</button>
+				<div className={styles.lowerBtn}>
+					<button
+						className={styles.clearBtn}
+						onClick={this.handleClearClick}
+					>
+						Clear dates
+					</button>
+					<button className={styles.reserveBtn}>Reserve</button>
+				</div>
 			</div>
 		);
 	}

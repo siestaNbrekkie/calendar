@@ -3,239 +3,176 @@ import styles from "../styles/calendar.css";
 import cx from "classnames";
 var moment = require("moment");
 
-class Day extends React.Component {
-	constructor(props) {
-		super(props);
-		// this.state = {
-		// 	date: this.props.day
-		// };
+function Day(props) {
+	return (
+		<td
+			key={props.day}
+			className={determineClassName(
+				props.day,
+				props.bookedDates,
+				props.selectedFirstDate,
+				props.selectedSecDate,
+				props.hoveredDate,
+				props.dateRestrictions
+			)}
+			onClick={
+				hasClick(
+					props.day,
+					props.bookedDates,
+					props.selectedFirstDate,
+					props.selectedSecDate,
+					props.hoveredDate,
+					props.dateRestrictions
+				)
+					? () => props.handleDateClick(props.day)
+					: null
+			}
+			onMouseEnter={
+				hasMouseEnter(
+					props.day,
+					props.selectedFirstDate,
+					props.selectedSecDate,
+					props.hoveredDate,
+					props.dateRestrictions
+				)
+					? () => props.handleHover(props.day)
+					: null
+			}
+		>
+			{displayValue(props.day)}
+		</td>
+	);
+}
+
+function determineClassName(
+	day,
+	bookedDates,
+	checkIn,
+	checkOut,
+	hoveredDate,
+	dateRestrictions
+) {
+	//not a valid day
+	if (!day) {
+		return cx(styles.td, styles.invalidDate);
+	}
+	//day before current date
+	if (moment(day).isBefore(moment(), "day")) {
+		return cx(styles.td, styles.unavailable);
 	}
 
-	render() {
-		var className = cx(styles.td, styles.available);
+	//day is a Booked Date
+	if (bookedDates.has(day)) {
+		return cx(styles.td, styles.unavailable);
+	}
 
-		if (!this.props.day) {
-			//check if day is not a valid date in the month
-			return (
-				<td
-					key={this.props.day}
-					className={(styles.td, styles.invalidDate)}
-				>
-					{this.props.day}
-				</td>
-			);
-		} else if (this.props.bookedDates.has(this.props.day)) {
-			//check if date is a booked date
-			className = cx(styles.td, styles.unavailable);
-			return (
-				<td key={this.props.day} className={className}>
-					{moment(this.props.day).date()}
-				</td>
-			);
-		} else if (
-			moment(this.props.day).isSame(this.props.selectedFirstDate)
-		) {
-			var minDays = this.props.dateRestrictions[
-				moment(this.props.selectedFirstDate)
+	//checkIn is selected and is current day
+	if (moment(day).isSame(checkIn)) {
+		return cx(styles.td, styles.selected);
+	}
+
+	//checkIn and checkOut is selected
+	if (checkIn && checkOut) {
+		if (moment(day).isBetween(checkIn, checkOut, null, [])) {
+			return cx(styles.td, styles.selected);
+		} else {
+			return cx(styles.td, styles.available);
+		}
+	}
+
+	//checkIn is selected, and hover is active
+	if (checkIn && hoveredDate) {
+		var totalDays = moment(checkIn).diff(day, "days");
+		if (moment(day).isBetween(checkIn, hoveredDate, null, [])) {
+			return cx(styles.td, styles.hoverMinDays);
+		} else if (totalDays < dateRestrictions.max_days * -1) {
+			return cx(styles.td, styles.unavailable);
+		} else if (totalDays > 0) {
+			return cx(styles.td, styles.unavailable);
+		} else {
+			return cx(styles.td, styles.available);
+		}
+	}
+
+	//checkIn is selected, no hover
+	if (checkIn && !checkOut) {
+		var totalDays = moment(checkIn).diff(day, "days");
+		var minDays =
+			dateRestrictions[
+				moment(checkIn)
 					.format("dddd")
 					.toLowerCase()
 					.concat("_min")
 			];
-			//check if is the selected first date
-			//no click
-			className = cx(styles.td, styles.selected);
-			return (
-				<td
-					key={this.props.day}
-					className={className}
-					title={`${minDays} night minimum stay`}
-				>
-					{moment(this.props.day).date()}
-				</td>
-			);
-		} else if (this.props.selectedFirstDate && this.props.hoveredDate) {
-			// the first date is selected and a date is hovered
-			console.log(this.props.hoveredDate);
-			if (
-				moment(this.props.day).isBetween(
-					this.props.selectedFirstDate,
-					this.props.hoveredDate,
-					null,
-					[]
-				)
-			) {
-				//date is part of the check-in through checkout date
-				className = cx(styles.td, styles.hoverMinDays);
-				return (
-					<td
-						key={this.props.day}
-						className={className}
-						onClick={() =>
-							this.props.handleDateClick(this.props.day)
-						}
-						onMouseEnter={() =>
-							this.props.handleHover(this.props.day)
-						}
-					>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			} else if (
-				moment(this.props.selectedFirstDate).diff(
-					this.props.day,
-					"days"
-				) <
-				this.props.dateRestrictions.max_days * -1
-			) {
-				//currenetdate is out of maximum date range
-				className = cx(styles.td, styles.unavailable);
-				return (
-					<td key={this.props.day} className={className}>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			} else {
-				//date is available
-				return (
-					<td
-						key={this.props.day}
-						className={className}
-						onClick={() =>
-							this.props.handleDateClick(this.props.day)
-						}
-						onMouseEnter={() =>
-							this.props.handleHover(this.props.day)
-						}
-					>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			}
-		} else if (this.props.selectedFirstDate && this.props.selectedSecDate) {
-			//both the first date and second date are selected
-			if (
-				moment(this.props.day).isBetween(
-					this.props.selectedFirstDate,
-					this.props.selectedSecDate,
-					null,
-					[]
-				)
-			) {
-				console.log("inclusive: ", this.props.day);
-				//date is part of the check-in through checkout date
-				className = cx(styles.td, styles.selected);
-				return (
-					<td
-						key={this.props.day}
-						className={className}
-						title={`${minDays} night minimum stay`}
-					>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			} else {
-				//date is available
-				return (
-					<td
-						key={this.props.day}
-						className={className}
-						onClick={() =>
-							this.props.handleDateClick(this.props.day)
-						}
-					>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			}
-		} else if (
-			this.props.selectedFirstDate &&
-			!this.props.selectedSecDate
-		) {
-			//locate min num days
-			var minDays =
-				this.props.dateRestrictions[
-					moment(this.props.selectedFirstDate)
-						.format("dddd")
-						.toLowerCase()
-						.concat("_min")
-				] * -1;
-
-			if (
-				moment(this.props.selectedFirstDate).diff(
-					this.props.day,
-					"days"
-				) > 0
-			) {
-				//firstDate is selected and current date is prior to firstDate
-				//no click
-				className = cx(styles.td, styles.unavailable);
-				return (
-					<td key={this.props.day} className={className}>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			} else if (
-				moment(this.props.selectedFirstDate).diff(
-					this.props.day,
-					"days"
-				) <= 0 &&
-				moment(this.props.selectedFirstDate).diff(
-					this.props.day,
-					"days"
-				) >= minDays
-			) {
-				//first date is selected and currentDate is within min date range
-				//no click
-				className = cx(styles.td, styles.hoverMinDays);
-				return (
-					<td key={this.props.day} className={className}>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			} else if (
-				moment(this.props.selectedFirstDate).diff(
-					this.props.day,
-					"days"
-				) <
-				this.props.dateRestrictions.max_days * -1
-			) {
-				//currenetdate is out of maximum date range
-				className = cx(styles.td, styles.unavailable);
-				return (
-					<td key={this.props.day} className={className}>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			} else {
-				//first date is selected and 2nd is outside of min date range, and available
-				className = cx(styles.td, styles.selectedAvailable);
-				return (
-					<td
-						key={this.props.day}
-						className={className}
-						onClick={() => {
-							this.props.handleDateClick(this.props.day);
-						}}
-						onMouseEnter={() =>
-							this.props.handleHover(this.props.day)
-						}
-					>
-						{moment(this.props.day).date()}
-					</td>
-				);
-			}
+		if (totalDays > 0) {
+			return cx(styles.td, styles.unavailable);
+		} else if (totalDays < dateRestrictions.max_days * -1) {
+			return cx(styles.td, styles.unavailable);
+		} else if (totalDays <= 0 && totalDays >= minDays * -1) {
+			return cx(styles.td, styles.hoverMinDays);
 		} else {
-			//availble date with click
-			return (
-				<td
-					key={this.props.day}
-					className={className}
-					onClick={() => this.props.handleDateClick(this.props.day)}
-				>
-					{moment(this.props.day).date()}
-				</td>
-			);
+			return cx(styles.td, styles.selectedAvailable);
 		}
+	}
+
+	//default to available style
+	return cx(styles.td, styles.available);
+}
+
+function hasClick(
+	day,
+	bookedDates,
+	checkIn,
+	checkOut,
+	hoveredDate,
+	dateRestrictions
+) {
+	var maxDate = undefined;
+	if (dateRestrictions.max_days) {
+		maxDate = moment(checkIn).add(dateRestrictions.max_days, "days");
+	}
+
+	//all dates between checkIn and maximum stay have clicks
+	if ((checkIn && !checkOut) || (checkIn && hoveredDate)) {
+		if (moment(day).isBetween(checkIn, maxDate, null, [])) {
+			return true;
+		} else {
+			//in in a checkIn or hover state, but not between dates, no click
+			return false;
+		}
+	}
+
+	//no selection state - days with no booked conflicts are have click
+	if (day || !bookedDates.has(day) || !moment(day).isSame(checkIn)) {
+		return true;
+	}
+
+	return false;
+}
+
+function hasMouseEnter(day, checkIn, checkOut, hoveredDate, dateRestrictions) {
+	var maxDate = undefined;
+
+	if (dateRestrictions.max_days) {
+		maxDate = moment(checkIn).add(dateRestrictions.max_days, "days");
+	}
+	//all dates between checkIn and maximum stay have hover
+	if ((checkIn && !checkOut) || (checkIn && hoveredDate)) {
+		if (moment(day).isBetween(checkIn, maxDate, null, [])) {
+			return true;
+		} else {
+			//in in a checkIn or hover state, but not between dates, no hover
+			return false;
+		}
+	}
+	return false;
+}
+
+function displayValue(day) {
+	if (!day) {
+		return "";
+	} else {
+		return moment(day).date();
 	}
 }
 

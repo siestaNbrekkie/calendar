@@ -5,14 +5,35 @@
 	font-weight: 600;
 }
 
-.button {
+.clearBtn {
 	color: #038c8c;
 	border: none;
 	background: none;
 	margin-top: 20px;
 }
 
+.reserveBtn {
+	color: white;
+	border: none;
+	background: #ff5a5f;
+	margin-top: 20px;
+	border-radius: 3px;
+	font-size: 10px;
+}
+
+.lowerBtn {
+	display: flex;
+	justify-content: space-between;
+}
+
 .calendar {
 	display: flex;
+	align-self: flex-start;
 	flex-direction: row;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
 }
