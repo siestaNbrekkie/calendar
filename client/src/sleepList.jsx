@@ -11,15 +11,25 @@ function SleepList(props) {
     }
   }
 
-  var currentViewRooms = props.rooms.slice(props.sleepView, props.sleepView + 3);
-  var bedRooms = currentViewRooms.map((room, i) => {
-    return <SleepInfo room={room} index={i} />;
+  //only render 3 rooms
+  var bedRooms = props.rooms.map((room, i) => {
+    return <SleepInfo room={room} index={i} sleepView={props.sleepView} />;
   });
 
   return (
     <div className={styles.sleepInfo}>
+      {props.sleepView > 0 ? (
+        <button className={styles.scrollLeft} onClick={() => props.handleSleepClick(-1)}>
+          {'<'}
+        </button>
+      ) : null}
       {bedRooms}
       {emptyDivs}
+      {props.sleepView + 2 < props.rooms.length - 1 ? (
+        <button className={styles.scrollRight} onClick={() => props.handleSleepClick(1)}>
+          {'>'}
+        </button>
+      ) : null}
     </div>
   );
 }

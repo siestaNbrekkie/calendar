@@ -34,6 +34,10 @@ class App extends React.Component {
         {
           numBeds: 1,
           bedType: 'double'
+        },
+        {
+          numBeds: 3,
+          bedType: 'single'
         }
       ],
       sleepView: 0
@@ -134,6 +138,13 @@ class App extends React.Component {
 
       return date;
     };
+
+    //sleepArrangement handles
+    this.handleSleepClick = direction => {
+      this.setState({
+        sleepView: this.state.sleepView + direction
+      });
+    };
   }
 
   componentDidMount() {
@@ -157,10 +168,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.overall}>
         <div className={styles.sleepContainer}>
           <h2 className={styles.h2}>Sleeping arrangements</h2>
-          <SleepList rooms={this.state.rooms} sleepView={this.state.sleepView} />
+          <SleepList
+            rooms={this.state.rooms}
+            sleepView={this.state.sleepView}
+            handleSleepClick={this.handleSleepClick}
+          />
         </div>
         <div className={styles.calendarContainer}>
           <h2 className={styles.h2}>Availability</h2>

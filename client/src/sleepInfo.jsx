@@ -2,6 +2,10 @@ import React from 'react';
 import styles from '../styles/sleepInfo.css';
 
 function SleepInfo(props) {
+  //handle displaying three at a time max
+  if (props.index > props.sleepView + 2 || props.index < props.sleepView) {
+    return null;
+  }
   var bedRoomNum = (props.index + 1).toString();
   var puralBed = props.room.numBeds === 1 ? 'bed' : 'beds';
 
