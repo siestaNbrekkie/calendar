@@ -1,0 +1,46 @@
+.info {
+  font-family: "Montserrat", "Helvetica", "sans-serif";
+  font-size: 14px;
+  color: #484848;
+  width: 155px;
+  border: 1px solid rgba(140, 140, 140, 0.2);
+  border-radius: 3px;
+  padding-left: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 14px
+
+}
+
+.bedImage {
+  color: #484848;
+}
+
+.roomNum {
+  color: #484848;
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 13px;
+  margin-top: 13px;
+  margin-bottom: 5px;
+}
+
+.bedInfo {
+  color: #484848;
+  margin: 0px;
+}
+
+.sleepInfo {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.lessThanThree {
+  width: 180px;
+  visibility: hidden
+}
+
+.invisible {
+  visibility: hidden
+}

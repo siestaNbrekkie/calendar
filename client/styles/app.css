@@ -3,8 +3,8 @@
 	font-family: "Montserrat", "Helvetica", "sans-serif";
 	font-size: 20px;
 	font-weight: 600;
-	margin-left: 10px;
 	margin-bottom: 5px;
+	margin-top: 0px;
 }
 
 .clearBtn {
@@ -32,12 +32,26 @@
 
 .calendar {
 	display: flex;
-	align-self: flex-start;
-	flex-direction: row;
+	justify-content: space-between;
 }
 
-.container {
+.calendarContainer {
 	display: flex;
 	flex-direction: column;
-	width: 590px;
+	width: 600px;
+	border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+	border-top: 1px solid rgba(140, 140, 140, 0.2);
+	padding-bottom: 30px;
+  padding-top: 30px;
+
+}
+
+.sleepContainer {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+	border-top: 1px solid rgba(140, 140, 140, 0.2);
+	padding-bottom: 30px;
+  padding-top: 30px;
 }
