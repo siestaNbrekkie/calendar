@@ -1,16 +1,22 @@
 import React from 'react';
 import styles from '../styles/sleepInfo.css';
+import cx from 'classnames';
 
 function SleepInfo(props) {
   //handle displaying three at a time max
-  if (props.index > props.sleepView + 2 || props.index < props.sleepView) {
+  if (props.index > props.sleepView + 3 || props.index < props.sleepView) {
     return null;
+  }
+
+  var slideClass = cx(styles.slide, styles.info);
+  if (props.index === props.sleepView + 3) {
+    slideClass = cx(styles.hiddenSlide, styles.slide, styles.info);
   }
   var bedRoomNum = (props.index + 1).toString();
   var puralBed = props.room.numBeds === 1 ? 'bed' : 'beds';
 
   return (
-    <div className={styles.info} key={props.index}>
+    <div className={slideClass} key={props.index}>
       {generateBedImage(props.room.bedType, props.room.numBeds)}
       <p className={styles.roomNum}>{`Bedroom ${bedRoomNum}`}</p>
       <p className={styles.bedInfo}>{`${String(props.room.numBeds)} ${

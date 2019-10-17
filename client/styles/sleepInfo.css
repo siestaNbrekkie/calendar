@@ -30,6 +30,11 @@
   margin: 0px;
 }
 
+
+.hiddenSlide {
+  display: none;
+}
+
 .sleepInfo {
   display: flex;
   justify-content: space-between;
@@ -46,9 +51,21 @@
   visibility: hidden
 }
 
-.scrollRight {
-  position: absolute;
+.scroll.right {
+
   right: -15px;
+
+}
+
+.scroll.left{
+
+  left: -15px;
+
+}
+
+
+.scroll {
+  position: absolute;
   top: 69px;
   font-size: 10px;
   width: 30px;
@@ -58,14 +75,26 @@
   box-shadow: 0px 1px 2px grey;
 }
 
-.scrollLeft{
-  position: absolute;
-  top: 69px;
-  left: -15px;
-  font-size: 10px;
-  width: 30px;
-  height: 30px;
-  border-color: white;
-  border-radius: 50%;
-  box-shadow: 0px 1px 2px grey;
+.scroll:hover {
+  border: .5px solid #484848;
+}
+
+.scroll:active {
+  border: .5px solid #484848;
+  box-shadow: inset 0px 0px 0px rgba(140, 140, 140, 1);
+  outline: none;
+}
+
+.slide {
+   -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+}
+
+@-webkit-keyframes slide {
+  100% { left: 0; }
+}
+
+@keyframes slide {
+  100% { left: 0; }
 }

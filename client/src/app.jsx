@@ -32,10 +32,6 @@ class App extends React.Component {
           bedType: 'queen'
         },
         {
-          numBeds: 1,
-          bedType: 'double'
-        },
-        {
           numBeds: 3,
           bedType: 'single'
         }

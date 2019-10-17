@@ -1,6 +1,7 @@
 import React from 'react';
 import SleepInfo from './SleepInfo.jsx';
 import styles from '../styles/sleepInfo.css';
+import cx from 'classnames';
 
 function SleepList(props) {
   //if less than 3 bedrooms, creates empty divs for spacing purposes
@@ -19,14 +20,20 @@ function SleepList(props) {
   return (
     <div className={styles.sleepInfo}>
       {props.sleepView > 0 ? (
-        <button className={styles.scrollLeft} onClick={() => props.handleSleepClick(-1)}>
+        <button
+          className={cx(styles.scroll, styles.left)}
+          onClick={() => props.handleSleepClick(-1)}
+        >
           {'<'}
         </button>
       ) : null}
       {bedRooms}
       {emptyDivs}
       {props.sleepView + 2 < props.rooms.length - 1 ? (
-        <button className={styles.scrollRight} onClick={() => props.handleSleepClick(1)}>
+        <button
+          className={cx(styles.scroll, styles.right)}
+          onClick={() => props.handleSleepClick(1)}
+        >
           {'>'}
         </button>
       ) : null}
