@@ -33,7 +33,8 @@ function Day(props) {
 					props.selectedFirstDate,
 					props.selectedSecDate,
 					props.hoveredDate,
-					props.dateRestrictions
+					props.dateRestrictions,
+					minDays
 				)
 					? () => props.handleDateClick(props.day)
 					: null
@@ -44,7 +45,8 @@ function Day(props) {
 					props.selectedFirstDate,
 					props.selectedSecDate,
 					props.hoveredDate,
-					props.dateRestrictions
+					props.dateRestrictions,
+					minDays
 				)
 					? () => props.handleHover(props.day)
 					: null
@@ -128,15 +130,21 @@ function determineClassName(day, bookedDates, checkIn, checkOut, hoveredDate, da
 	return cx(styles.td, styles.available);
 }
 
-function hasClick(day, bookedDates, checkIn, checkOut, hoveredDate, dateRestrictions) {
-	let maxDate;
+function hasClick(day, bookedDates, checkIn, checkOut, hoveredDate, dateRestrictions, minDays) {
+	let maxDate, minDay;
 	if (dateRestrictions.max_days) {
 		maxDate = moment(checkIn).add(dateRestrictions.max_days, 'days');
+	}
+	if (checkIn) {
+		minDay = moment(checkIn).add(minDays, 'd');
 	}
 
 	// all dates between checkIn and maximum stay have clicks
 	if ((checkIn && !checkOut) || (checkIn && hoveredDate)) {
-		if (moment(day).isBetween(checkIn, maxDate, null, [])) {
+		if (
+			moment(day).isBetween(checkIn, maxDate, null, []) &&
+			!moment(day).isBetween(checkIn, minDay)
+		) {
 			return true;
 		}
 		// in in a checkIn or hover state, but not between dates, no click
@@ -151,15 +159,23 @@ function hasClick(day, bookedDates, checkIn, checkOut, hoveredDate, dateRestrict
 	return false;
 }
 
-function hasMouseEnter(day, checkIn, checkOut, hoveredDate, dateRestrictions) {
-	let maxDate;
+function hasMouseEnter(day, checkIn, checkOut, hoveredDate, dateRestrictions, minDays) {
+	let maxDate, minDay;
 
 	if (dateRestrictions.max_days) {
 		maxDate = moment(checkIn).add(dateRestrictions.max_days, 'days');
 	}
+
+	if (checkIn) {
+		minDay = moment(checkIn).add(minDays, 'd');
+	}
+
 	// all dates between checkIn and maximum stay have hover
 	if ((checkIn && !checkOut) || (checkIn && hoveredDate)) {
-		if (moment(day).isBetween(checkIn, maxDate, null, [])) {
+		if (
+			moment(day).isBetween(checkIn, maxDate, null, []) &&
+			!moment(day).isBetween(checkIn, minDay)
+		) {
 			return true;
 		}
 		// in in a checkIn or hover state, but not between dates, no hover

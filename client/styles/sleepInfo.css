@@ -52,17 +52,12 @@
 }
 
 .scroll.right {
-
   right: -15px;
-
 }
 
 .scroll.left{
-
   left: -15px;
-
 }
-
 
 .scroll {
   position: absolute;
@@ -89,6 +84,7 @@
    -webkit-animation: slide 0.5s forwards;
     -webkit-animation-delay: 2s;
     animation: slide 0.5s forwards;
+    animation-delay: 3s;
 }
 
 @-webkit-keyframes slide {
