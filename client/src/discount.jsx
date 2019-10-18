@@ -6,8 +6,8 @@ function discount(props) {
   const { measure } = props;
   const discountOffer = `This host offers ${rate}% off if you stay for ${measure} days.`;
   return (
-    <div className={styles.discount}>
-      <p>{discountOffer}</p>
+    <div>
+      <p className={styles.discount}>{discountOffer}</p>
     </div>
   );
 }

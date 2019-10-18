@@ -20,7 +20,7 @@ class App extends React.Component {
       selectedFirstDate: undefined,
       selectedSecDate: undefined,
       hoveredDate: undefined,
-      //sleeping arrangements
+      // sleeping arrangements
       rooms: [
         { numBeds: 2, bedType: 'single' },
         {
@@ -69,7 +69,15 @@ class App extends React.Component {
         checkOut: this.state.selectedSecDate
       };
 
-      // post request logic pending
+      // post request
+      axios
+        .post(`http://localhost:3000/${lastSegment}`, data)
+        .then(res => {
+          console.log('done posting....');
+        })
+        .catch(err => {
+          console.log('error posting.. ', err);
+        });
     };
 
     this.handleHover = date => {
@@ -135,7 +143,7 @@ class App extends React.Component {
       return date;
     };
 
-    //sleepArrangement handles
+    // sleepArrangement handles
     this.handleSleepClick = direction => {
       this.setState({
         sleepView: this.state.sleepView + direction

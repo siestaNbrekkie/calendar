@@ -2,12 +2,10 @@
   font-family: "Montserrat", "Helvetica", "sans-serif";
   font-size: 14px;
   color: #484848;
-  width: 155px;
+  width: 130px;
   border: 1px solid rgba(140, 140, 140, 0.2);
   border-radius: 3px;
-  padding-left: 25px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 25px;
   margin-top: 14px
 
 }
@@ -38,8 +36,7 @@
 .sleepInfo {
   display: flex;
   justify-content: space-between;
-  position:relative;
-
+  position: relative;
 }
 
 .lessThanThree {
@@ -78,19 +75,4 @@
   border: .5px solid #484848;
   box-shadow: inset 0px 0px 0px rgba(140, 140, 140, 1);
   outline: none;
-}
-
-.slide {
-   -webkit-animation: slide 0.5s forwards;
-    -webkit-animation-delay: 2s;
-    animation: slide 0.5s forwards;
-    animation-delay: 3s;
-}
-
-@-webkit-keyframes slide {
-  100% { left: 0; }
-}
-
-@keyframes slide {
-  100% { left: 0; }
 }

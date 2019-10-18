@@ -1,31 +1,35 @@
-var mysql = require("mysql");
-var Sequelize = require("sequelize");
+var mysql = require('mysql');
+var Sequelize = require('sequelize');
 
 //database, username, pass
-const sequelize = new Sequelize("siestaNbrekkie", "root", "", {
-	host: "localhost",
-	dialect: "mysql"
+const sequelize = new Sequelize('siestaNbrekkie', 'root', '', {
+	host: 'localhost',
+	dialect: 'mysql'
 });
 
 sequelize
 	.authenticate()
 	.then(() => {
-		console.log("Sequelize Connection has been established successfully.");
+		console.log('Sequelize Connection has been established successfully.');
 	})
 	.catch(err => {
-		console.error("Unable to connect to the database:", err);
+		console.error('Unable to connect to the database:', err);
 	});
 
 /***************** MODELS *****************/
 /*****************************************/
 const Listing = sequelize.define(
-	"Listing",
+	'Listing',
 	{
 		id: {
 			type: Sequelize.INTEGER,
 			primaryKey: true
 		},
 		short_desc: {
+			type: Sequelize.STRING,
+			allowNull: true
+		},
+		long_desc: {
 			type: Sequelize.STRING,
 			allowNull: true
 		},
@@ -50,7 +54,7 @@ const Listing = sequelize.define(
 );
 
 const MinMax = sequelize.define(
-	"MinMaxDays",
+	'MinMaxDays',
 	{
 		sunday_min: { type: Sequelize.INTEGER },
 		monday_min: { type: Sequelize.INTEGER },
@@ -64,8 +68,19 @@ const MinMax = sequelize.define(
 	},
 	{ timestamps: false }
 );
+
+const Bedrooms = sequelize.define(
+	'Bedrooms',
+	{
+		numBeds: { type: Sequelize.INTEGER },
+		bedType: { type: Sequelize.STRING },
+		listing_id: { type: Sequelize.INTEGER }
+	},
+	{ timestamps: false }
+);
+
 const UADays = sequelize.define(
-	"UnavailableDates",
+	'UnavailableDates',
 	{
 		ua_date: Sequelize.DATEONLY,
 		listing_id: Sequelize.INTEGER
@@ -73,13 +88,17 @@ const UADays = sequelize.define(
 	{ timestamps: false }
 );
 
-Listing.hasMany(UADays, { foreignKey: "listing_id", sourceKey: "id" });
-UADays.belongsTo(Listing, { foreignKey: "listing_id", targetKey: "id" });
+Listing.hasMany(UADays, { foreignKey: 'listing_id', sourceKey: 'id' });
+UADays.belongsTo(Listing, { foreignKey: 'listing_id', targetKey: 'id' });
 
-Listing.belongsTo(MinMax, { foreignKey: "listing_id", sourceKey: "id" });
-Listing.hasOne(MinMax, { foreignKey: "listing_id", sourceKey: "id" });
+Listing.belongsTo(MinMax, { foreignKey: 'listing_id', sourceKey: 'id' });
+Listing.hasOne(MinMax, { foreignKey: 'listing_id', sourceKey: 'id' });
+
+Listing.belongsTo(Bedrooms, { foreignKey: 'listing_id', sourceKey: 'id' });
+Listing.hasOne(Bedrooms, { foreignKey: 'listing_id', sourceKey: 'id' });
 
 module.exports.sequelize = sequelize;
 module.exports.Listing = Listing;
 module.exports.MinMax = MinMax;
 module.exports.UADays = UADays;
+module.exports.Bedrooms = Bedrooms;

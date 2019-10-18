@@ -12,6 +12,8 @@ function insertSeedData(data, table) {
 		model = db.Listing;
 	} else if (table === 'minmax') {
 		model = db.MinMax;
+	} else if (table === 'bedrooms') {
+		model = db.Bedrooms;
 	} else {
 		model = db.UADays;
 	}
@@ -30,7 +32,7 @@ function insertSeedData(data, table) {
 	)
 		.then(res => {
 			console.log('finished inserting seed data for: ', table);
-			return 'success';
+			//return 'success';
 		})
 		.catch(err => {
 			console.log('error inserting seedData for: ', table);
@@ -41,3 +43,4 @@ function insertSeedData(data, table) {
 insertSeedData(seedData.listing, 'listing');
 insertSeedData(seedData.uaData, 'uaDays');
 insertSeedData(seedData.minmax, 'minmax');
+insertSeedData(seedData.bedrooms, 'bedrooms');

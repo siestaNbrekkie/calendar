@@ -1,23 +1,35 @@
 import React from 'react';
-import Day from './day.jsx';
+import Day from './day';
 
 function week(props) {
-  const days = props.days.map(day => (
+  const {
+    days,
+    index,
+    bookedDates,
+    dateRestrictions,
+    selectedFirstDate,
+    handleHover,
+    selectedSecDate,
+    handleDateClick,
+    hoveredDate
+  } = props;
+
+  const dayComponents = days.map(day => (
     <Day
       day={day}
-      bookedDates={props.bookedDates}
-      handleDateClick={props.handleDateClick}
-      dateRestrictions={props.dateRestrictions}
-      selectedFirstDate={props.selectedFirstDate}
-      selectedSecDate={props.selectedSecDate}
-      handleHover={props.handleHover}
-      hoveredDate={props.hoveredDate}
+      bookedDates={bookedDates}
+      handleDateClick={handleDateClick}
+      dateRestrictions={dateRestrictions}
+      selectedFirstDate={selectedFirstDate}
+      selectedSecDate={selectedSecDate}
+      handleHover={handleHover}
+      hoveredDate={hoveredDate}
     />
   ));
 
   return (
-    <tr key={props.index} className="week">
-      {days}
+    <tr key={index} className="week">
+      {dayComponents}
     </tr>
   );
 }

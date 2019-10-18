@@ -10,7 +10,8 @@ router.get('/:id?', (req, res) => {
 
 router.post('/:id?', (req, res) => {
   var id = req.params.id;
-  // var modelRes = model.getBookingData(req.params.id, res);
+  console.log('got data for ', id);
+  res.end();
 });
 
 module.exports.router = router;
