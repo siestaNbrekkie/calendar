@@ -14,7 +14,7 @@ function SleepList(props) {
 
   // only render 3 rooms
   const bedRooms = props.rooms.map((room, i) => {
-    return <SleepInfo room={room} index={i} sleepView={props.sleepView} />;
+    return <SleepInfo key={i} room={room} index={i} sleepView={props.sleepView} />;
   });
 
   return (
@@ -27,8 +27,15 @@ function SleepList(props) {
           {'<'}
         </button>
       ) : null}
-      {bedRooms}
-      {emptyDivs}
+      <div
+        className={styles.sleepInfoWrapper}
+        style={{
+          transform: `translateX(-${props.sleepView * (100 / 3)}%)`
+        }}
+      >
+        {bedRooms}
+        {emptyDivs}
+      </div>
       {props.sleepView + 2 < props.rooms.length - 1 ? (
         <button
           className={cx(styles.scroll, styles.right)}

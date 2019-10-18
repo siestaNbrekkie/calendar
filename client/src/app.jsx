@@ -151,7 +151,7 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  /* componentDidMount() {
     const parts = document.URL.split('/');
     const lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
 
@@ -168,7 +168,7 @@ class App extends React.Component {
       .catch(err => {
         console.log('err.. did not set state', err);
       });
-  }
+  } */
 
   render() {
     return (
@@ -176,11 +176,14 @@ class App extends React.Component {
         <div className={styles.sleepContainer}>
           <h2 className={styles.h2}>Sleeping arrangements</h2>
           <SleepList
+            key="sleeplist1"
             rooms={this.state.rooms}
             sleepView={this.state.sleepView}
             handleSleepClick={this.handleSleepClick}
           />
         </div>
+        {/*
+
         <div className={styles.calendarContainer}>
           <h2 className={styles.h2}>Availability</h2>
           <Discount rate={this.state.discount_rate} measure={this.state.discount_measure} />
@@ -223,6 +226,7 @@ class App extends React.Component {
             </div>
           ) : null}
         </div>
+        */}
       </div>
     );
   }
