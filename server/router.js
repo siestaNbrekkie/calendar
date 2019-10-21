@@ -1,15 +1,15 @@
-var express = require('express');
-var model = require('./model.js');
-var router = express.Router();
-const path = require('path');
+const express = require('express');
+const model = require('./model.js');
+
+const router = express.Router();
 
 router.get('/:id?', (req, res) => {
-  var id = req.params.id;
-  var modelRes = model.getBookingData(req.params.id, res);
+  const { id } = req.params;
+  const modelRes = model.getBookingData(req.params.id, res);
 });
 
 router.post('/:id?', (req, res) => {
-  var id = req.params.id;
+  const { id } = req.params;
   console.log('got data for ', id);
   res.end();
 });

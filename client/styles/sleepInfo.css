@@ -10,8 +10,6 @@
   margin-right: 7px;
   flex-grow: 0;
   flex-shrink: 0;
-  /*flex: 1;*/
-
 }
 
 .bedImage {
@@ -82,7 +80,6 @@
 
 .sleepInfo {
   display: flex;
-  
   position: relative;
 }
 .overflowControl{
@@ -93,6 +90,5 @@
 .cardWrapper {
   display: flex;
   transition: transform 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  /*transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s, line-height 1s;*/
 }
 

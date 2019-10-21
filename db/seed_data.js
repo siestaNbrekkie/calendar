@@ -1,10 +1,6 @@
 const moment = require('moment');
 const faker = require('faker');
 
-// console.log(faker.address.city());
-// console.log(faker.address.country());
-// console.log(faker.lorem.sentences());
-
 const listing = [];
 const minmax = [];
 const uaData = [];
@@ -90,14 +86,14 @@ for (let x = 1; x < 101; x++) {
 }
 
 /*
-example:
+example data:
 listing = [
 	{
 		short_desc: "Beautiful contemporary villa in Pedregal",
 		city: "Cabo San Lucas",
 		country: "Mexico",
 		discount_rate: 0.03,
-		discount_measure: 7
+		discount_measure: 14
 	}
 ];
 
@@ -122,8 +118,6 @@ uaData = [
 	}]
 */
 
-// console.log(minmax[0]);
-// console.log(listing[0]);
 module.exports.listing = listing;
 module.exports.minmax = minmax;
 module.exports.uaData = uaData;

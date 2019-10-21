@@ -1,6 +1,4 @@
 .table {
-	/*	table-layout: fixed;
-*/
 	border-collapse: collapse;
 	font-family: "Montserrat", "Helvetica", "sans-serif";
 	font-size: 14px;
@@ -21,6 +19,7 @@
 	font-size: 20px;
 	margin: 10px;
 }
+
 .left,
 .right {
 	flex: 1;
