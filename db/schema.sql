@@ -5,7 +5,6 @@ use siestaNbrekkie;
 create table Listings (
 	id int AUTO_INCREMENT,
 	short_desc varchar(255),
-	long_desc varchar(255),
 	city varchar(255),
 	country varchar(255),
 	discount_rate double,
@@ -31,15 +30,6 @@ create table MinMaxDays (
 create table UnavailableDates (
 	id int AUTO_INCREMENT,
 	ua_date date NOT NULL,
-	listing_id int NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (listing_id) references Listings(id)
-);
-
-create table Bedrooms (
-	id int AUTO_INCREMENT,
-	numBeds int,
-	bedType varchar(255),
 	listing_id int NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (listing_id) references Listings(id)
