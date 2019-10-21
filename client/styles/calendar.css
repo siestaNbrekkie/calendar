@@ -12,11 +12,12 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
 .center {
 	font-family: "Montserrat", "Helvetica", "sans-serif";
 	color: #484848;
 	font-weight: 600;
-	font-size: 20px;
+	font-size: 18px;
 	margin: 10px;
 }
 
