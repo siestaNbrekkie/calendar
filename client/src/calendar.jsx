@@ -11,6 +11,7 @@ function Calendar(props) {
 
   const weeks = datesInMonth.map((days, index) => (
     <Week
+      key={index}
       days={days}
       weekNum={index}
       bookedDates={props.bookedDates}

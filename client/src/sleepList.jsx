@@ -5,10 +5,10 @@ import styles from '../styles/sleepInfo.css';
 
 function SleepList(props) {
   // if less than 3 bedrooms, creates empty divs for spacing purposes
+  const emptyDivs = [];
   if (props.rooms.length < 3) {
-    var emptyDivs = [];
     for (let i = 0; i < 3 - props.rooms.length; i++) {
-      emptyDivs.push(<div className={styles.lessThanThree} />);
+      emptyDivs.push(<div key={'emptyDiv'.concat(String(i))} className={styles.lessThanThree} />);
     }
   }
 
@@ -18,7 +18,18 @@ function SleepList(props) {
   });
 
   return (
-    <div className={styles.sleepInfo}>
+    <div className={styles.slider}>
+      <div className={styles.overflowControl}>
+        <div
+          className={styles.cardWrapper}
+          style={{
+            transform: `translateX(-${props.sleepView * (100 / 3)}%)`
+          }}
+        >
+          {bedRooms}
+          {emptyDivs}
+        </div>
+      </div>
       {props.sleepView > 0 ? (
         <button
           className={cx(styles.scroll, styles.left)}
@@ -27,15 +38,7 @@ function SleepList(props) {
           {'<'}
         </button>
       ) : null}
-      <div
-        className={styles.sleepInfoWrapper}
-        style={{
-          transform: `translateX(-${props.sleepView * (100 / 3)}%)`
-        }}
-      >
-        {bedRooms}
-        {emptyDivs}
-      </div>
+
       {props.sleepView + 2 < props.rooms.length - 1 ? (
         <button
           className={cx(styles.scroll, styles.right)}
@@ -48,4 +51,7 @@ function SleepList(props) {
   );
 }
 
+/* style={{
+          transform: `translateX(-${props.sleepView * (100 / 3)}%)`
+        }} */
 export default SleepList;

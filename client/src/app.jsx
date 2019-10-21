@@ -21,21 +21,7 @@ class App extends React.Component {
       selectedSecDate: undefined,
       hoveredDate: undefined,
       // sleeping arrangements
-      rooms: [
-        { numBeds: 2, bedType: 'single' },
-        {
-          numBeds: 1,
-          bedType: 'king'
-        },
-        {
-          numBeds: 1,
-          bedType: 'queen'
-        },
-        {
-          numBeds: 3,
-          bedType: 'single'
-        }
-      ],
+      rooms: [],
       sleepView: 0
     };
 
@@ -151,7 +137,7 @@ class App extends React.Component {
     };
   }
 
-  /* componentDidMount() {
+  componentDidMount() {
     const parts = document.URL.split('/');
     const lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
 
@@ -162,13 +148,14 @@ class App extends React.Component {
           bookedDates: new Set(res.data.bookedDates),
           dateRestrictions: res.data.dateRestrictions,
           discount_measure: res.data.discount_measure,
-          discount_rate: res.data.discount_rate
+          discount_rate: res.data.discount_rate,
+          rooms: res.data.bedrooms
         });
       })
       .catch(err => {
         console.log('err.. did not set state', err);
       });
-  } */
+  }
 
   render() {
     return (
@@ -182,7 +169,6 @@ class App extends React.Component {
             handleSleepClick={this.handleSleepClick}
           />
         </div>
-        {/*
 
         <div className={styles.calendarContainer}>
           <h2 className={styles.h2}>Availability</h2>
@@ -226,7 +212,6 @@ class App extends React.Component {
             </div>
           ) : null}
         </div>
-        */}
       </div>
     );
   }

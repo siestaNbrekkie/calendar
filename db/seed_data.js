@@ -11,15 +11,6 @@ const uaData = [];
 const bedrooms = [];
 
 for (let i = 1; i < 101; i++) {
-  const listingData = {
-    short_desc: faker.lorem.words(Math.floor(Math.random() * 5)),
-    long_desc: faker.lorem.paragraphs(Math),
-    city: faker.address.city(),
-    country: faker.address.country(),
-    discount_rate: (Math.random() * (0.35 - 0.1) + 0.1).toFixed(2),
-    discount_measure: Math.floor(Math.random() * 35)
-  };
-
   const minmaxData = {
     sunday_min: Math.floor(Math.random() * 5),
     monday_min: Math.floor(Math.random() * 3),
@@ -32,13 +23,23 @@ for (let i = 1; i < 101; i++) {
     listing_id: i
   };
 
+  const listingData = {
+    short_desc: faker.lorem.words(Math.floor(Math.random() * 5)),
+    long_desc: faker.lorem.paragraphs(Math.floor(Math.random() * (4 - 1) + 1)),
+    city: faker.address.city(),
+    country: faker.address.country(),
+    discount_rate: (Math.random() * (0.35 - 0.1) + 0.1).toFixed(2),
+    discount_measure: minmaxData.max_days
+    // Math.floor(Math.random() * 35)
+  };
+
   listing.push(listingData);
   minmax.push(minmaxData);
 }
 
 // UA Dates
 for (let x = 1; x < 101; x++) {
-  const numBookedOccurances = Math.floor(Math.random() * 14);
+  const numBookedOccurances = Math.floor(Math.random() * (15 - 1) + 1);
 
   for (let z = 0; z < numBookedOccurances; z++) {
     const totalNumDays = Math.floor(Math.random() * (5 - 2) + 2);
@@ -57,7 +58,7 @@ for (let x = 1; x < 101; x++) {
 
 // bedrooms
 for (let x = 1; x < 101; x++) {
-  const numRooms = Math.floor(Math.random() * 7);
+  const numRooms = Math.floor(Math.random() * (6 - 1) + 1);
 
   for (let z = 0; z < numRooms; z++) {
     const totalNumBeds = Math.floor(Math.random() * (4 - 1) + 1);
@@ -121,6 +122,8 @@ uaData = [
 	}]
 */
 
+// console.log(minmax[0]);
+// console.log(listing[0]);
 module.exports.listing = listing;
 module.exports.minmax = minmax;
 module.exports.uaData = uaData;

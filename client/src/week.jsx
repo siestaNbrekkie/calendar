@@ -16,6 +16,7 @@ function week(props) {
 
   const dayComponents = days.map(day => (
     <Day
+      key={day}
       day={day}
       bookedDates={bookedDates}
       handleDateClick={handleDateClick}

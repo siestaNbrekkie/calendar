@@ -3,15 +3,8 @@ import cx from 'classnames';
 import styles from '../styles/sleepInfo.css';
 
 function SleepInfo(props) {
-  // handle displaying three at a time max
-  if (props.index > props.sleepView + 2 || props.index < props.sleepView) {
-    return null;
-  }
-
   const slideClass = cx(styles.info);
-  // if (props.index === props.sleepView + 3) {
-  //   slideClass = cx(styles.hiddenSlide, styles.slide, styles.info);
-  // }
+
   const bedRoomNum = (props.index + 1).toString();
   const puralBed = props.room.numBeds === 1 ? 'bed' : 'beds';
 
