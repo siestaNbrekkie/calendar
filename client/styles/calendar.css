@@ -1,0 +1,129 @@
+.table {
+	/*	table-layout: fixed;
+*/
+	border-collapse: collapse;
+	font-family: "Montserrat", "Helvetica", "sans-serif";
+	font-size: 14px;
+	text-align: center;
+	position: relative;
+	z-index: 100;
+}
+
+.month {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.center {
+	font-family: "Montserrat", "Helvetica", "sans-serif";
+	color: #484848;
+	font-weight: 600;
+	font-size: 20px;
+	margin: 10px;
+}
+.left,
+.right {
+	flex: 1;
+}
+
+.button {
+	border: 1px solid rgba(140, 140, 140, 0.2);
+	border-radius: 2.5px;
+	height: 34px;
+	width: 39px;
+}
+
+.button:hover {
+	border: 1px solid rgba(140, 140, 140, 0.5);
+	border-radius: 2.5px;
+	height: 34px;
+	width: 39px;
+}
+
+.invisible {
+	width: 39px;
+	height: 34px;
+}
+
+.th {
+	color: #484848;
+	padding: 4px;
+	font-weight: 400;
+}
+
+.td {
+	font-weight: 600;
+	border: 2.5px solid white;
+	border-radius: 7px;
+	padding: 10px;
+	position: relative;
+	z-index: 200;
+}
+
+/* available - light blue background with dark blue font */
+.td.available {
+	color: #038c8c;
+	background-color: rgba(120, 191, 191, 0.2);
+}
+/*hover unselected - light blue with white font */
+.td.available:hover {
+	color: #038c8c;
+	background-color: rgba(111, 191, 191, 0.5);
+}
+
+/*selected - dark blue background with white font*/
+.td.selected {
+	color: white;
+	background-color: rgba(3, 140, 140, 1);
+}
+
+/*hover selected predictive- light blue with white font */
+.td.hoverMinDays {
+	color: white;
+	background-color: rgba(203, 238, 235, 1);
+}
+
+/* available dates, checkIn date is selected - light blue background with dark blue font */
+.td.selectedAvailable {
+	color: #038c8c;
+	background-color: rgba(120, 191, 191, 0.2);
+}
+
+/*hover unselected available Dates for checkout selection- light blue with white font */
+.td.selectedAvailable:hover {
+	color: white;
+	background-color: rgba(203, 238, 235, 1);
+}
+
+/*diagonal stripes, unavailable dates*/
+.td.unavailable {
+	color: rgba(204, 204, 204, 1);
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(140, 140, 140, 0.2),
+		rgba(140, 140, 140, 0.2) 0.8px,
+		rgba(255, 255, 255, 0.2) 0.8px,
+		rgba(255, 255, 255, 0.2) 3.2px
+	);
+}
+
+/*not a date in the given month - white unavailable dates*/
+.td.invalidDate {
+	background: rgba(255, 255, 255, 1);
+}
+
+/*show minimum night stay*/
+.td.minNight {
+	font-size: 10px;
+	top: -25px;
+	left: 0;
+	padding: 5px;
+	border: 1px;
+	white-space: nowrap;
+	box-shadow: -1.5px 1.5px 3px grey;
+	text-align: center;
+	position: absolute;
+	color: black;
+	background: white;
+	z-index: 500;
+}

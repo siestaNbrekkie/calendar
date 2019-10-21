@@ -1,0 +1,98 @@
+.info {
+  font-family: "Montserrat", "Helvetica", "sans-serif";
+  font-size: 14px;
+  color: #484848;
+  width: 136px;
+  border: 1px solid rgba(140, 140, 140, 0.2);
+  border-radius: 3px;
+  padding: 25px;
+  margin-left: 7px;
+  margin-right: 7px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  /*flex: 1;*/
+
+}
+
+.bedImage {
+  color: #484848;
+}
+
+.roomNum {
+  color: #484848;
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 13px;
+  margin-top: 13px;
+  margin-bottom: 5px;
+}
+
+.bedInfo {
+  color: #484848;
+  margin: 0px;
+}
+
+
+.lessThanThree {
+  width: 180px;
+  visibility: hidden
+}
+
+.invisible {
+  visibility: hidden
+}
+
+.scroll.right {
+  right: -7px;
+}
+
+.scroll.left{
+  left: -15px;
+}
+
+.scroll {
+  position: absolute;
+  top: 69px;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
+  border-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 1px 2px grey;
+}
+
+.scroll:hover {
+  border: .5px solid #484848;
+}
+
+.scroll:active {
+  border: .5px solid #484848;
+  box-shadow: inset 0px 0px 0px rgba(140, 140, 140, 1);
+  outline: none;
+}
+
+.hiddenSlide {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  margin-top: 14px;
+}
+
+.sleepInfo {
+  display: flex;
+  
+  position: relative;
+}
+.overflowControl{
+  overflow: hidden;
+  margin-left: -7px;
+}
+
+.cardWrapper {
+  display: flex;
+  transition: transform 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  /*transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s, line-height 1s;*/
+}
+

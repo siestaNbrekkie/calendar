@@ -1,0 +1,61 @@
+.overall {
+	margin-left: 50px;
+}
+.h2 {
+	color: #484848;
+	font-family: "Montserrat", "Helvetica", "sans-serif";
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+
+.clearBtn {
+	color: #038c8c;
+	border: none;
+	background: none;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.reserveBtn {
+	color: white;
+	border: none;
+	background: #ff5a5f;
+	border-radius: 3px;
+	font-size: 14px;
+	width: 150px;
+	height: 30px;
+}
+
+.lowerBtns {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.calendar {
+	display: flex;
+	justify-content: space-between;
+}
+
+.calendarContainer {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+	/*border-top: 1px solid rgba(140, 140, 140, 0.2);*/
+	padding-bottom: 30px;
+  padding-top: 30px;
+
+}
+
+.sleepContainer {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+	border-top: 1px solid rgba(140, 140, 140, 0.2);
+	padding-bottom: 30px;
+  padding-top: 30px;
+}
