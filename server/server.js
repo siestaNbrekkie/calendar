@@ -3,7 +3,7 @@ const path = require('path');
 const router = require('./router.js');
 
 const app = express();
-const port = 3000;
+const port = 3004;
 
 app.use('/rooms/:id', express.static(path.join(__dirname, '..', 'public')));
 
