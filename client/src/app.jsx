@@ -57,7 +57,7 @@ class App extends React.Component {
 
       // post request
       axios
-        .post(`http://localhost:3004/${lastSegment}`, data)
+        .post(`http://localhost:3004/api/${lastSegment}`, data)
         .then(res => {
           console.log('done posting....');
         })
@@ -143,7 +143,7 @@ class App extends React.Component {
     const lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
 
     axios
-      .get(`http://localhost:3004/${lastSegment}`)
+      .get(`http://localhost:3004/api/${lastSegment}`)
       .then(res => {
         this.setState({
           bookedDates: new Set(res.data.bookedDates),
