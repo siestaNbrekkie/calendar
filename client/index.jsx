@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./src/app.jsx";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SleepAndCalendar from './src/SleepAndCalendar.jsx';
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<SleepAndCalendar />, document.getElementById('calendar'));

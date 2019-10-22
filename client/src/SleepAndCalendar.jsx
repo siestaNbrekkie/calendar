@@ -7,7 +7,7 @@ import styles from '../styles/app.css';
 const axios = require('axios');
 const moment = require('moment');
 
-class App extends React.Component {
+class SleepAndCalendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -218,4 +218,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default SleepAndCalendar;
