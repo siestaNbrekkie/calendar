@@ -1,11 +1,9 @@
 const express = require('express');
 const path = require('path');
-var router = require('./router.js');
-var model = require('./model.js');
+const router = require('./router.js');
+
 const app = express();
 const port = 3000;
-
-// app.use("/", router.router);
 
 app.use('/rooms/:id', express.static(path.join(__dirname, '..', 'public')));
 

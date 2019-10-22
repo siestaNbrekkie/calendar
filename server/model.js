@@ -55,5 +55,5 @@ function getBookingData(id, res) {
       console.log('error from get query', err);
     });
 }
-getBookingData(3);
+
 module.exports.getBookingData = getBookingData;

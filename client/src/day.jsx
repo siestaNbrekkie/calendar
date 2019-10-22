@@ -46,7 +46,8 @@ function Day(props) {
           props.selectedSecDate,
           props.hoveredDate,
           props.dateRestrictions,
-          minDays
+          minDays,
+          props.bookedDates
         )
           ? () => props.handleHover(props.day)
           : null
@@ -126,7 +127,6 @@ function determineClassName(day, bookedDates, checkIn, checkOut, hoveredDate, da
   }
 
   // default to available style
-
   return cx(styles.td, styles.available);
 }
 
@@ -144,7 +144,8 @@ function hasClick(day, bookedDates, checkIn, checkOut, hoveredDate, dateRestrict
   if ((checkIn && !checkOut) || (checkIn && hoveredDate)) {
     if (
       moment(day).isBetween(checkIn, maxDate, null, []) &&
-      !moment(day).isBetween(checkIn, minDay)
+      !moment(day).isBetween(checkIn, minDay) &&
+      !bookedDates.has(day)
     ) {
       return true;
     }
@@ -160,7 +161,15 @@ function hasClick(day, bookedDates, checkIn, checkOut, hoveredDate, dateRestrict
   return false;
 }
 
-function hasMouseEnter(day, checkIn, checkOut, hoveredDate, dateRestrictions, minDays) {
+function hasMouseEnter(
+  day,
+  checkIn,
+  checkOut,
+  hoveredDate,
+  dateRestrictions,
+  minDays,
+  bookedDates
+) {
   let maxDate;
   let minDay;
 
@@ -176,7 +185,8 @@ function hasMouseEnter(day, checkIn, checkOut, hoveredDate, dateRestrictions, mi
   if ((checkIn && !checkOut) || (checkIn && hoveredDate)) {
     if (
       moment(day).isBetween(checkIn, maxDate, null, []) &&
-      !moment(day).isBetween(checkIn, minDay)
+      !moment(day).isBetween(checkIn, minDay) &&
+      !bookedDates.has(day)
     ) {
       return true;
     }

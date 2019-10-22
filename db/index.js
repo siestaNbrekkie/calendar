@@ -29,10 +29,6 @@ const Listing = sequelize.define(
       type: Sequelize.STRING,
       allowNull: true
     },
-    long_desc: {
-      type: Sequelize.STRING,
-      allowNull: true
-    },
     city: {
       type: Sequelize.STRING,
       allowNull: true

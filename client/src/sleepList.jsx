@@ -35,7 +35,12 @@ function SleepList(props) {
           className={cx(styles.scroll, styles.left)}
           onClick={() => props.handleSleepClick(-1)}
         >
-          {'<'}
+          <svg width="10px" height="10px" viewBox="0 0 18 18">
+            <path
+              d="m 13.7 16.29 a 1 1 0 1 1 -1.42 1.41 l -8 -8 a 1 1 0 0 1 0 -1.41 l 8 -8 a 1 1 0 1 1 1.42 1.41 l -7.29 7.29 Z"
+              fill="#484848"
+            />
+          </svg>
         </button>
       ) : null}
 
@@ -44,14 +49,16 @@ function SleepList(props) {
           className={cx(styles.scroll, styles.right)}
           onClick={() => props.handleSleepClick(1)}
         >
-          {'>'}
+          <svg width="10px" height="10px" viewBox="0 0 18 18">
+            <path
+              d="m 4.29 1.71 a 1 1 0 1 1 1.42 -1.41 l 8 8 a 1 1 0 0 1 0 1.41 l -8 8 a 1 1 0 1 1 -1.42 -1.41 l 7.29 -7.29 Z"
+              fill="#484848"
+            />
+          </svg>
         </button>
       ) : null}
     </div>
   );
 }
 
-/* style={{
-          transform: `translateX(-${props.sleepView * (100 / 3)}%)`
-        }} */
 export default SleepList;

@@ -93,7 +93,7 @@ class App extends React.Component {
     };
 
     this.checkDates = date => {
-      const firstdate = moment(this.state.selectedFirstDate);
+      let firstdate = moment(this.state.selectedFirstDate);
       const minDay = this.state.dateRestrictions[
         firstdate
           .format('dddd')
@@ -124,6 +124,7 @@ class App extends React.Component {
         if (this.state.bookedDates.has(firstdate.add(i, 'd').format('YYYY-MM-DD'))) {
           return undefined;
         }
+        firstdate = moment(this.state.selectedFirstDate);
       }
 
       return date;
