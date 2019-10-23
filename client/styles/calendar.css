@@ -28,6 +28,7 @@
 
 .button {
 	border: 1px solid rgba(140, 140, 140, 0.2);
+	background: white;
 	border-radius: 2.5px;
 	height: 34px;
 	width: 39px;
@@ -35,6 +36,7 @@
 
 .button:hover {
 	border: 1px solid rgba(140, 140, 140, 0.5);
+	background: white;
 	border-radius: 2.5px;
 	height: 34px;
 	width: 39px;
