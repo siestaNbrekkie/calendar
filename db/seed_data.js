@@ -20,7 +20,7 @@ function createData() {
     };
 
     const listingData = {
-      short_desc: faker.lorem.words(Math.floor(Math.random() * 5)),
+      short_desc: faker.lorem.words(Math.floor(Math.random() * (5 - 1) + 1)),
       city: faker.address.city(),
       country: faker.address.country(),
       discount_rate: (Math.random() * (0.35 - 0.1) + 0.1).toFixed(2),
