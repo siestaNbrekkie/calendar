@@ -1,0 +1,24 @@
+.name {
+  font-family: "Montserrat", "Helvetica", "sans-serif";
+  color: #484848;
+  font-weight: 600;
+  font-size: 39px;
+}
+
+.city {
+  font-family: "Montserrat", "Roboto", "Helvetica", "sans-serif";
+  color: #484848;
+  font-weight: 400;
+  font-size: 22px;
+  margin-top: 25px;
+
+}
+
+.bedrooms {
+  font-family: "Montserrat", "Roboto", "Helvetica", "sans-serif";
+  color: #484848;
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 20px;
+
+}

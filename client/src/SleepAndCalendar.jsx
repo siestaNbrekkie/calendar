@@ -2,6 +2,7 @@ import React from 'react';
 import Discount from './discount.jsx';
 import Calendar from './calendar.jsx';
 import SleepList from './sleepList.jsx';
+import Title from './title.jsx';
 import styles from '../styles/app.css';
 
 const axios = require('axios');
@@ -22,7 +23,10 @@ class SleepAndCalendar extends React.Component {
       hoveredDate: undefined,
       // sleeping arrangements
       rooms: [],
-      sleepView: 0
+      sleepView: 0,
+      // title arrangements
+      name: '',
+      city: ''
     };
 
     this.handleFwdClick = () => {
@@ -150,7 +154,9 @@ class SleepAndCalendar extends React.Component {
           dateRestrictions: res.data.dateRestrictions,
           discount_measure: res.data.discount_measure,
           discount_rate: res.data.discount_rate,
-          rooms: res.data.bedrooms
+          rooms: res.data.bedrooms,
+          name: res.data.short_desc,
+          city: res.data.city
         });
       })
       .catch(err => {
@@ -161,6 +167,13 @@ class SleepAndCalendar extends React.Component {
   render() {
     return (
       <div className={styles.overall}>
+        <div className={styles.titleContainer}>
+          <Title
+            name={this.state.name}
+            city={this.state.city}
+            bedroomCount={this.state.rooms.length}
+          />
+        </div>
         <div className={styles.sleepContainer}>
           <h2 className={styles.h2}>Sleeping arrangements</h2>
           <SleepList
