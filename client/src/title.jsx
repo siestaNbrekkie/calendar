@@ -6,7 +6,7 @@ import styles from '../styles/title.css';
 function Title(props) {
   let totalBeds = 0;
   for (let i = 0; i < props.rooms.length; i++) {
-    totalBeds += props.rooms[0].numBeds;
+    totalBeds += props.rooms[i].numBeds;
   }
 
   return (
