@@ -4,6 +4,11 @@ import SleepInfo from './SleepInfo.jsx';
 import styles from '../styles/title.css';
 
 function Title(props) {
+  let totalBeds = 0;
+  for (let i = 0; i < props.rooms.length; i++) {
+    totalBeds += props.rooms[0].numBeds;
+  }
+
   return (
     <div>
       <div className={styles.name}>
@@ -13,7 +18,10 @@ function Title(props) {
           .concat(props.name.slice(1))}
       </div>
       <div className={styles.city}>{props.city}</div>
-      <div className={styles.bedrooms}>{`${props.bedroomCount} Bedrooms`}</div>
+      <div className={styles.listingDetail}>
+        <div className={styles.bedInfo}>{`${props.bedroomCount} Bedrooms`}</div>
+        <div className={styles.bedInfo}>{`${totalBeds} Beds`}</div>
+      </div>
     </div>
   );
 }

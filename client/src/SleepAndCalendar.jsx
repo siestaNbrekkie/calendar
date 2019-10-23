@@ -172,6 +172,7 @@ class SleepAndCalendar extends React.Component {
             name={this.state.name}
             city={this.state.city}
             bedroomCount={this.state.rooms.length}
+            rooms={this.state.rooms}
           />
         </div>
         <div className={styles.sleepContainer}>

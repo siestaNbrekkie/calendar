@@ -14,7 +14,14 @@ function SleepList(props) {
 
   // only render 3 rooms
   const bedRooms = props.rooms.map((room, i) => {
-    return <SleepInfo key={i} room={room} index={i} sleepView={props.sleepView} />;
+    return (
+      <SleepInfo
+        key={String(i).concat(room.bedType)}
+        room={room}
+        index={i}
+        sleepView={props.sleepView}
+      />
+    );
   });
 
   return (

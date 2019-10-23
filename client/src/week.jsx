@@ -14,9 +14,9 @@ function week(props) {
     hoveredDate
   } = props;
 
-  const dayComponents = days.map(day => (
+  const dayComponents = days.map((day, key) => (
     <Day
-      key={day}
+      key={key}
       day={day}
       bookedDates={bookedDates}
       handleDateClick={handleDateClick}

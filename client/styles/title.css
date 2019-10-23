@@ -2,23 +2,31 @@
   font-family: "Montserrat", "Helvetica", "sans-serif";
   color: #484848;
   font-weight: 600;
-  font-size: 39px;
+  font-size: 38px;
 }
 
 .city {
   font-family: "Montserrat", "Roboto", "Helvetica", "sans-serif";
   color: #484848;
   font-weight: 400;
-  font-size: 22px;
-  margin-top: 25px;
+  font-size: 17px;
+  margin-top: 12px;
 
 }
 
-.bedrooms {
+.bedInfo {
   font-family: "Montserrat", "Roboto", "Helvetica", "sans-serif";
   color: #484848;
   font-weight: 400;
-  font-size: 18px;
-  margin-top: 20px;
+  font-size: 16px;
+  margin-left: 18px;
+  margin-right: 18px;
 
+}
+
+.listingDetail {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 19px;
+  margin-left: -20px;
 }
