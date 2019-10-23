@@ -7,7 +7,6 @@ const seedData = require('./seed_data.js');
 /** ************************************** */
 
 function insertSeedData(data, table) {
-  seedData.createData();
   let model;
   if (table === 'listing') {
     model = db.Listing;
@@ -41,6 +40,7 @@ function insertSeedData(data, table) {
     });
 }
 
+seedData.createData();
 insertSeedData(seedData.listing, 'listing');
 insertSeedData(seedData.uaData, 'uaDays');
 insertSeedData(seedData.minmax, 'minmax');

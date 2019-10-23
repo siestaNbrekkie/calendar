@@ -12,11 +12,13 @@ function getBookingData(id, res) {
     dateRestrictions: undefined,
     discount_rate: undefined,
     discount_measure: undefined,
+    short_desc: undefined,
+    city: undefined,
     bedrooms: []
   };
 
   db.Listing.findAll({
-    attributes: ['discount_rate', 'discount_measure'],
+    attributes: ['discount_rate', 'discount_measure', 'short_desc', 'city'],
     where: { id },
     include: [
       {
@@ -40,6 +42,8 @@ function getBookingData(id, res) {
       const bedrooms = data.Bedrooms;
       results.discount_rate = data.discount_rate;
       results.discount_measure = data.discount_measure;
+      results.short_desc = data.short_desc;
+      results.city = data.city;
       results.dateRestrictions = data.MinMaxDay.dataValues;
 
       for (let i = 0; i < uaRes.length; i++) {
