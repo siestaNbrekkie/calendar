@@ -166,7 +166,7 @@ class SleepAndCalendar extends React.Component {
 
   render() {
     return (
-      <div className={styles.overall}>
+      <div>
         <div className={styles.titleContainer}>
           <Title
             name={this.state.name}
