@@ -61,7 +61,7 @@ class SleepAndCalendar extends React.Component {
 
       // post request
       axios
-        .post(`http://localhost:3004/api/${lastSegment}`, data)
+        .post(`http://3.133.49.225:3004/api/${lastSegment}`, data)
         .then(res => {
           console.log('done posting....');
         })
@@ -147,7 +147,7 @@ class SleepAndCalendar extends React.Component {
     const lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
 
     axios
-      .get(`http://localhost:3004/api/${lastSegment}`)
+      .get(`http://3.133.49.225:3004/api/${lastSegment}`)
       .then(res => {
         this.setState({
           bookedDates: new Set(res.data.bookedDates),
