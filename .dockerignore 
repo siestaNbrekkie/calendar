@@ -1,0 +1,7 @@
+node_modules
+test
+coverage
+client/src/day_org.jsx
+.eslintrc.json
+.prettierrrc
+npm-debug.log

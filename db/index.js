@@ -2,10 +2,11 @@ const mysql = require('mysql');
 const Sequelize = require('sequelize');
 
 // database, username, pass
-const sequelize = new Sequelize('siestaNbrekkie', 'root', '', {
-  host: 'localhost',
+const sequelize = new Sequelize('siestaNbrekkie', 'root', 'password', {
+  host: 'database',
   dialect: 'mysql'
 });
+// const sequelize = new Sequelize('seed_db', 'user', '');
 
 sequelize
   .authenticate()
