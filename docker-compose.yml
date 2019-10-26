@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  calendar:
+    build: calendar/
+    depends_on:
+      - 'database'
+    ports: 
+      - '3004:3004'
+
+  database:
+    image: db
+    environment:
+          MYSQL_ROOT_PASSWORD: 'password'
