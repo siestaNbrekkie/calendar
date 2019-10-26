@@ -1,14 +1,26 @@
-version: '3'
+version: '3.7'
 
 services:
   calendar:
-    build: calendar/
+    build: ./
     depends_on:
       - 'database'
     ports: 
       - '3004:3004'
 
   database:
-    image: db
+    image: mysql:5.7.15
     environment:
+          MYSQL_DATABASE: 'siestaNbrekkie'
           MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+         - ./dump:/docker-entrypoint-initdb.d/:ro
+
+
