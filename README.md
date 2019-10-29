@@ -4,7 +4,7 @@ Reservation and lodging information microservice for a hotel reservation web app
 ## Related Projects
   - https://github.com/siestaNbrekkie/reviews
   - https://github.com/siestaNbrekkie/image-carousel
-  - https://github.com/siestaNbrekkie/image-carousel/reservations
+  - https://github.com/siestaNbrekkie/reservations
 
 ## Table of Contents
 1. [Usage](#Usage)
