@@ -4,7 +4,7 @@ Reservation and lodging information microservice for a hotel reservation web app
 ## Related Projects
   - https://github.com/siestaNbrekkie/reviews
   - https://github.com/siestaNbrekkie/image-carousel
-  - https://github.com/UrbanEats/reservations
+  - https://github.com/siestaNbrekkie/image-carousel/reservations
 
 ## Table of Contents
 1. [Usage](#Usage)
@@ -35,21 +35,12 @@ npm run db
 npm run seed-data
 ```
 
-4. Update route for client API requests
-client folder > src > SleepAndCalendar.jsx > line: 64 (within handleReserveClick function)
-change: 'http://3.133.49.225:3004/ '
-to: 'http://localhost:3004/'
-
-client folder > src > SleepAndCalendar.jsx > line: 150 (within componentDidMount function)
-change: 'http://3.133.49.225:3004/ '
-to: 'http://localhost:3004/'
-
-5. Build the microservice bundle
+4. Build the microservice bundle
 ```javascript
 npm run build
 ```
 
-6. To start the server
+5. To start the server
 ```javascript
 npm run server
 ```
