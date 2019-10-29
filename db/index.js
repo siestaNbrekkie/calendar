@@ -1,12 +1,17 @@
 const mysql = require('mysql');
 const Sequelize = require('sequelize');
 
-// database, username, pass
-const sequelize = new Sequelize('siestaNbrekkie', 'root', 'password', {
-  host: 'database',
+// database, username, pass for DOCKER deployment
+// const sequelize = new Sequelize('siestaNbrekkie', 'root', 'password', {
+//   host: 'database',
+//   dialect: 'mysql'
+// });
+
+// database, username, pass for localhost deployment
+const sequelize = new Sequelize('siestaNbrekkie', 'root', '', {
+  host: 'localhost',
   dialect: 'mysql'
 });
-// const sequelize = new Sequelize('seed_db', 'user', '');
 
 sequelize
   .authenticate()
