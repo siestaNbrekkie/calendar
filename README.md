@@ -45,4 +45,4 @@ npm run build
 npm run server
 ```
 
-6. Go to to see the component `localhost:3004/rooms/1` 
+6. Go to see the component at `localhost:3004/rooms/1` 
