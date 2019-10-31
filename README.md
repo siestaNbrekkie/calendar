@@ -4,17 +4,17 @@
 
 #### URL
 
-`localhost:3004/rooms/:id`
+`/rooms/:id`
 
 #### GET: 
 
-`rooms/:id` - Retrieves the current available and unavailable dates for this location ID in body of GET request 
+`/room/:id/availability` - Retrieves the current available and unavailable dates for this location ID in body of GET request 
 
               ex: {id: number}
 
 #### PATCH: 
 
-`rooms/:id` - Updates this location's available dates based on the dates chosen on the calendar, dates chosen will be sent in PATCH body
+`room/:id/availability` - Updates this location's available dates based on the dates chosen on the calendar, dates chosen will be sent in PATCH body
 
               ex: {dateStart: date, dateEnd: date}
 
@@ -26,4 +26,4 @@
 
 #### DELETE: 
 
-`/:id` - Removes the location by ID given from the database
+`room/:id` - Removes the location by ID given from the database
