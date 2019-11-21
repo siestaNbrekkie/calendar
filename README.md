@@ -1,5 +1,6 @@
 # siestaNbrekkie Calendar Reservation
 Reservation and lodging information microservice for a hotel reservation web application
+![](calendar-sleeping-demo.gif)
 
 ## Related Projects
   - https://github.com/siestaNbrekkie/reviews
