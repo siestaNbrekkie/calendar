@@ -7,11 +7,6 @@ Reservation and lodging information microservice for a hotel reservation web app
   - https://github.com/siestaNbrekkie/image-carousel
   - https://github.com/siestaNbrekkie/reservations
 
-## Table of Contents
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
 ## Requirements
 - Node v8.15.x
 - MySQL v5.7.x
